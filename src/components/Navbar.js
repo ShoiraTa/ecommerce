@@ -2,15 +2,31 @@ import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { cartSvg, smallArrowDown, greenCartSvg, smallArrowUp } from '../assets/svgIcons';
-import { setCurrency } from '../redux/reducers/header/headerReducerActions';
+import { setCurrency, getCurrencies, getCategories, setCategory } from '../redux/reducers/header/headerReducerActions';
+
+const mapStateToProps = (state) => ({
+  headerReducer: state.headerReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setCurrency: (currency, symbol) => dispatch(setCurrency(currency, symbol)),
+  setCategory: (category) => dispatch(setCategory(category)),
+  getCurrencies: () => dispatch(getCurrencies),
+  getCategories: () => dispatch(getCategories),
+});
 
 class Navbar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      active: 'women',
       dropdownOpen: false,
     };
+  }
+
+  componentDidMount() {
+    const { getCategories, getCurrencies } = this.props;
+    getCategories();
+    getCurrencies();
   }
 
   toggleDropdown = () => {
@@ -18,41 +34,25 @@ class Navbar extends Component {
   };
 
   render() {
-    const { active, dropdownOpen } = this.state;
-    const { symbol } = this.props.headerReducer;
+    const { dropdownOpen } = this.state;
+    const { currentCurrency, currencies, categories, currentCategory } = this.props.headerReducer;
     return (
       <header className="container">
         <nav>
           <ul>
             <li className="nav-left-group">
               <ul>
-                <li>
-                  <Link
-                    to="/women"
-                    className={active === 'women' ? 'nav-link-active' : 'c-text'}
-                    onClick={() => this.setState({ active: 'women' })}
-                  >
-                    WOMEN
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/men"
-                    className={active === 'men' ? 'nav-link-active' : 'c-text'}
-                    onClick={() => this.setState({ active: 'men' })}
-                  >
-                    MEN
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/kids"
-                    className={active === 'kids' ? 'nav-link-active' : 'c-text'}
-                    onClick={() => this.setState({ active: 'kids' })}
-                  >
-                    KIDS
-                  </Link>
-                </li>
+                {categories?.map((category) => (
+                  <li key={category.name}>
+                    <Link
+                      to={category.name}
+                      className={currentCategory === category.name ? 'nav-link-active' : 'c-text'}
+                      onClick={() => this.props.setCategory(category.name)}
+                    >
+                      {category.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </li>
             <li className="nav-middle-group">
@@ -65,46 +65,30 @@ class Navbar extends Component {
                 <li className="d-flex align-items-center">
                   <button type="button" onClick={this.toggleDropdown}>
                     <span type="button" className="currency">
-                      {symbol}
+                      {currentCurrency.symbol}
                     </span>
                     {dropdownOpen ? smallArrowUp : smallArrowDown}
                   </button>
                   {dropdownOpen && (
                     <ul className="dropdown">
-                      <li>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            this.props.setCurrency('USD', '$');
-                            this.toggleDropdown();
-                          }}
-                        >
-                          $ USD
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          type="button"
-                          className="b-gray"
-                          onClick={() => {
-                            this.props.setCurrency('EUR', '€');
-                            this.toggleDropdown();
-                          }}
-                        >
-                          € EUR
-                        </button>
-                      </li>
-                      <li>
-                        <button
-                          type="button"
-                          onClick={() => {
-                            this.props.setCurrency('JPY', '¥');
-                            this.toggleDropdown();
-                          }}
-                        >
-                          ¥ JPY
-                        </button>
-                      </li>
+                      {currencies.map((currency, i) => {
+                        return (
+                          <li key={currency.label}>
+                            <button
+                              type="button"
+                              className={i % 2 === 1 ? 'b-gray' : ''}
+                              onClick={() => {
+                                this.props.setCurrency(currency.label, currency.symbol);
+                                this.toggleDropdown();
+                              }}
+                            >
+                              <span>{currency.symbol}</span>
+                              &nbsp;&nbsp;
+                              <span>{currency.label}</span>
+                            </button>
+                          </li>
+                        );
+                      })}
                     </ul>
                   )}
                 </li>
@@ -117,14 +101,5 @@ class Navbar extends Component {
     );
   }
 }
-
-const mapStateToProps = (state) => ({
-  headerReducer: state.headerReducer,
-});
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setCurrency: (currency, symbol) => dispatch(setCurrency(currency, symbol)),
-  };
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
