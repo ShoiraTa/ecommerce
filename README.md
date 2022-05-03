@@ -9,7 +9,6 @@ In this project, I build a minimalistic e-commerce web page.
 - CSS
 - React
 - GraphQl
-- Apollo
 
 ### Technologies used
 
@@ -18,6 +17,7 @@ In this project, I build a minimalistic e-commerce web page.
 - Visual Studio Code
 - webpack
 - npm
+- Apollo
 
 ## Demo
 

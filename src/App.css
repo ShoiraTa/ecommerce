@@ -1,39 +1,127 @@
-.App {
-  text-align: center;
+:root{
+  --c-primary: #5ECE7B;
+  --c-text: #1D1F22;
+  --c-black: #1D1F22;
+  --b-gray: #EEEEEE;
+}
+body {
+  margin: 0;
+  font-family: 'Raleway', sans-serif;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--c-black);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.c-primary{
+  color: var(--c-primary)
+}
+.c-text{
+  color: var(--c-text)
+}
+.c-black{
+  color: var(--c-black)
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.b-gray{
+  background-color: var(--b-gray);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+ul{
+  list-style: none;
+}
+
+button, a{
+  cursor: pointer;
+  text-decoration: none;
+  background-color: #fff;
+  border: none;
+}
+
+.currency{
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 160%;
+  color: var(--c-black);
+  padding-right: 5px;
+}
+
+
+/* ** Buttons */
+/* Navbar */
+nav{
+  height: 80px;
+}
+
+nav ul{
+  display: flex;
+  justify-content: space-between;
+  height: 100%;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav li a {
+  transition: 0.1s;
+  padding: 30px 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 120%;
+}
+
+.nav-link-active{
+  color: var(--c-primary);
+  border-bottom: 2px solid var(--c-primary);
+  font-weight: 600;
+}
+
+.nav-middle-group {
+  padding-top: 10px;
+}
+
+.nav-right-group{
+  width: 228px;
+  justify-content: end;
+  display: flex;
+  padding-top: 5px;
+}
+
+.nav-right-group ul{
+  width: 70px;
+}
+
+.dropdown{
+  position: absolute;
+  top: 35px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: start;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  height: 160px;
+  left: -20px;
+  width: 114px!important;
+  justify-content: space-evenly;
 }
 
-.App-link {
-  color: #61dafb;
+.dropdown button {
+  height: 47px;
+  width: 114px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 160%;
+  padding-left: 20px;
+  text-align: start;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+.dropdown button:hover{
+  color: #4e515b;
+}
 
-  to {
-    transform: rotate(360deg);
+/* ** Responsiveness */
+
+@media only screen and (max-width: 768px) {
+  .flex-xs-column {
+    flex-direction: column;
   }
 }
