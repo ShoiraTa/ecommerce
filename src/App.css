@@ -32,6 +32,10 @@ img{
   background-color: var(--b-gray);
 }
 
+.cursor-default{
+  cursor: default;
+}
+
 ul{
   list-style: none;
 }
@@ -137,11 +141,11 @@ text-align: start;
   margin: 0;
 }
 
-.products-wrapper{
+.products-grid{
   margin: 103px 0 191px 0;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
   gap: 103px 30px;
+  grid-template-columns: repeat(auto-fit, minmax(31%, 1fr))
 }
 
 
@@ -149,20 +153,21 @@ text-align: start;
 .listing-card-wrapper{
   height: 444px;
   padding: 16px 0 0;
-  flex: 0 0 31.333333%;
   display: flex;
   flex-direction: column;
-  cursor: pointer;
   transition: 0.2s;
 }
 
 .listing-card-wrapper:hover{
   box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
 }
+
 .listing-card-img-container{
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-bottom: 24px;
+  position: relative;
 }
 
 .listing-card-img{
@@ -170,6 +175,7 @@ text-align: start;
   width:  354px;
   height: 330px;
   background-size: cover;
+
 }
 
 .listing-card-desc{
@@ -178,6 +184,14 @@ text-align: start;
   flex-direction: column;
   height: 58px;
   padding: 16px;
+  position: relative;
+}
+
+.listing-card-desc button{
+  position: absolute;
+  right: 31px;
+  top: -53px;
+  background-color: transparent;
 }
 
 .listing-card-desc h3, 
@@ -191,6 +205,20 @@ text-align: start;
 
 .listing-card-desc h4{
   font-weight: 500;
+}
+
+.listing-card-out{
+  background-color: #fff;
+  opacity: 0.5;
+  cursor: none;
+}
+
+.listing-card-outofstock{
+  position: absolute;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 160%;
+  color: #8D8F9A;
 }
 /* ** Responsiveness */
 

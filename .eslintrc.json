@@ -25,7 +25,8 @@
     "react/destructuring-assignment":"off",
     "arrow-body-style":"off",
     "react/no-access-state-in-setstate":"off",
-    "object-curly-newline":"off"
+    "object-curly-newline":"off",
+    "max-len": "off"
   },
   "ignorePatterns": [ 
     "dist/",

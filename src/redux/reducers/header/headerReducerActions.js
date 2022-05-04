@@ -24,7 +24,6 @@ export const getCurrencies = async (dispatch) => {
     query: 'query fetchCurrencies { currencies { label symbol } }',
     variables: {},
   };
-
   axios({
     url: endpoint,
     data: currencyQuery,

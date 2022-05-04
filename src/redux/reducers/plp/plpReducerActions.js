@@ -7,7 +7,6 @@ const headers = {
 };
 
 export const getCategoryProducts = (categoryName) => async (dispatch) => {
-  console.log(categoryName);
   const categoryProductsQuery = {
     operationName: 'fetchCurrencies',
     query: `query fetchCurrencies 
@@ -56,4 +55,4 @@ export const getCategoryProducts = (categoryName) => async (dispatch) => {
   });
 };
 
-export const getSomething = () => {};
+export const getCategoryProdu = () => {};
