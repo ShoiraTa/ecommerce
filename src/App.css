@@ -226,6 +226,7 @@ text-align: start;
   margin-top: 72px;
   height: 790px;
   gap: 35px;
+  overflow: hidden;
 }
 .variant-img-container{
   display: flex;
@@ -275,6 +276,7 @@ text-align: start;
   font-size: 18px;
   line-height: 18px;
   margin: 0;
+  text-transform: uppercase;
 }
 
 .sizes-container{
@@ -291,6 +293,11 @@ text-align: start;
   justify-content: center;
   border: 1px solid var(--c-text);
 }
+
+.color-box{
+  width: 32px;
+  height: 32px;
+}
 .desc-add-cart{
   margin: 20px 0 40px;
 }
@@ -300,6 +307,20 @@ text-align: start;
   height: 52px;
   color: #fff;
   background-color: var(--c-primary);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 120%;
+}
+
+.desc-priceBox{
+  width: 86px;
+  height: 46px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .desc-product-desc p{

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getCategoryProducts } from '../../../redux/reducers/plp/plpReducerActions';
+import { getCategoryProducts } from '../../../redux/reducers/pdp/pdpReducerActions';
 import ProductListingCard from './ProductListingCard';
 
 const mapStateToProps = (state) => ({
   headerReducer: state.headerReducer,
   pricesReducer: state.pricesReducer,
-  plpReducer: state.plpReducer,
+  pdpReducer: state.pdpReducer,
   currentCategory: state.headerReducer.currentCategory,
 });
 
@@ -28,10 +28,11 @@ class ProductListingPage extends Component {
   }
 
   render() {
-    const { headerReducer, pricesReducer, plpReducer } = this.props;
+    const { headerReducer, pricesReducer, pdpReducer } = this.props;
     const { currentCategory } = headerReducer;
     const { currentCurrency } = pricesReducer;
-    const { products } = plpReducer;
+    const { products } = pdpReducer;
+
     return (
       <section className="container-sm">
         <div className="products-listing-wrapper">

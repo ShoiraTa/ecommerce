@@ -4,17 +4,17 @@ const initState = {
   products: [],
 };
 
-const plpReducer = (state = initState, action) => {
+const pdpReducer = (state = initState, action) => {
   switch (action.type) {
-    case actionType.FETCH_CATEGORY_PRODUCTS:
+    case actionType.FETCH_PRODUCT:
       return {
         ...state,
-        products: action.payload,
+        product: action.payload,
+        pdpLoading: false,
       };
-
     default:
       return state;
   }
 };
 
-export default plpReducer;
+export default pdpReducer;

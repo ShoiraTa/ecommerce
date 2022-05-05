@@ -2,7 +2,8 @@ import actionType from '../actionTypes';
 
 const initState = {
   product: {},
-  loading: true,
+  pdpLoading: true,
+  products: [],
 };
 
 const pdpReducer = (state = initState, action) => {
@@ -11,9 +12,14 @@ const pdpReducer = (state = initState, action) => {
       return {
         ...state,
         product: action.payload,
-        loading: false,
+        pdpLoading: false,
       };
-
+    case actionType.FETCH_CATEGORY_PRODUCTS:
+      return {
+        ...state,
+        products: action.payload,
+        pdpLoading: false,
+      };
     default:
       return state;
   }

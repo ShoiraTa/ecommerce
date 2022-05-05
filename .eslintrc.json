@@ -30,7 +30,8 @@
     "max-len": "off",
     "react/jsx-props-no-spreading": "off",
     "react/display-name": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "no-case-declarations": "off"
   },
   "ignorePatterns": [ 
     "dist/",

@@ -1,37 +1,35 @@
 import React, { Component } from 'react';
+import Attributes from '../../Attributes';
 
 class ProductVariants extends Component {
+  filterDescription = (desc) => {
+    console.log(desc);
+    return desc.replace(/<\/?p[^>]*>/g, '');
+  };
+
   render() {
-    const { brand, name, attributes, description } = this.props;
-    console.log(attributes);
+    const { brand, name, attributes, description, price } = this.props;
     return (
       <div className="pdp-desc">
         <div className="pdp-desc-header">
           <h1 className="desc-brand">{brand}</h1>
           <h3 className="desc-product-name">{name}</h3>
         </div>
-        <div>
-          <h5 className="desc-h5">SIZE:</h5>
-          <div className="sizes-container">
-            {attributes[0] &&
-              attributes[0].items.map((attr) => (
-                <button type="button" className="size-box" key={attr.displayValue}>
-                  {attr.displayValue}
-                </button>
-              ))}
+        <Attributes attributes={attributes} />
+        <div className="desc-price">
+          <h3 className="desc-h5">PRICE</h3>
+          <div className="desc-priceBox">
+            {price && price.symbol}
+            {price && price.amount}
           </div>
         </div>
-        <div>
-          <h5 className="desc-h5">COLOR: </h5>
-        </div>
-        <div className="desc-price">price</div>
         <div className="desc-add-cart">
           <button type="button" className="add-cart-btn">
             ADD TO CART
           </button>
         </div>
         <div className="desc-product-desc">
-          <p>{description}</p>
+          <p>{description && this.filterDescription(description)}</p>
         </div>
       </div>
     );
