@@ -2,10 +2,12 @@ import { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { cartSvg, smallArrowDown, greenCartSvg, smallArrowUp } from '../assets/svgIcons';
-import { setCurrency, getCurrencies, getCategories, setCategory } from '../redux/reducers/header/headerReducerActions';
+import { getCategories, setCategory } from '../redux/reducers/header/headerReducerActions';
+import { setCurrency, getCurrencies } from '../redux/reducers/global/pricesReducerActions';
 
 const mapStateToProps = (state) => ({
   headerReducer: state.headerReducer,
+  pricesReducer: state.pricesReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -36,8 +38,9 @@ class Navbar extends Component {
 
   render() {
     const { dropdownOpen } = this.state;
-    const { setCategory, headerReducer, setCurrency } = this.props;
-    const { currentCurrency, currencies, categories, currentCategory } = headerReducer;
+    const { setCategory, headerReducer, pricesReducer, setCurrency } = this.props;
+    const { categories, currentCategory } = headerReducer;
+    const { currentCurrency, currencies } = pricesReducer;
     return (
       <header className="container">
         <nav>

@@ -5,6 +5,7 @@ import ProductListingCard from './ProductListingCard';
 
 const mapStateToProps = (state) => ({
   headerReducer: state.headerReducer,
+  pricesReducer: state.pricesReducer,
   plpReducer: state.plpReducer,
   currentCategory: state.headerReducer.currentCategory,
 });
@@ -27,8 +28,9 @@ class ProductListingPage extends Component {
   }
 
   render() {
-    const { headerReducer, plpReducer } = this.props;
-    const { currentCategory, currentCurrency } = headerReducer;
+    const { headerReducer, pricesReducer, plpReducer } = this.props;
+    const { currentCategory } = headerReducer;
+    const { currentCurrency } = pricesReducer;
     const { products } = plpReducer;
     return (
       <section className="container-sm">
