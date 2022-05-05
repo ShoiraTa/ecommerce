@@ -6,6 +6,7 @@ import ProductListingCard from './ProductListingCard';
 const mapStateToProps = (state) => ({
   headerReducer: state.headerReducer,
   plpReducer: state.plpReducer,
+  currentCategory: state.headerReducer.currentCategory,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -14,20 +15,21 @@ const mapDispatchToProps = (dispatch) => ({
 
 class ProductListingPage extends Component {
   componentDidMount() {
-    const { getCategoryProducts } = this.props;
-    getCategoryProducts(this.props.headerReducer.currentCategory);
+    const { getCategoryProducts, currentCategory } = this.props;
+    getCategoryProducts(currentCategory);
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.headerReducer.currentCategory !== this.props.headerReducer.currentCategory) {
-      const { getCategoryProducts } = this.props;
-      getCategoryProducts(this.props.headerReducer.currentCategory);
+    const { currentCategory, getCategoryProducts } = this.props;
+    if (prevProps.currentCategory !== currentCategory) {
+      getCategoryProducts(currentCategory);
     }
   }
 
   render() {
-    const { currentCategory, currentCurrency } = this.props.headerReducer;
-    const { products } = this.props.plpReducer;
+    const { headerReducer, plpReducer } = this.props;
+    const { currentCategory, currentCurrency } = headerReducer;
+    const { products } = plpReducer;
     return (
       <section className="container-sm">
         <div className="products-listing-wrapper">

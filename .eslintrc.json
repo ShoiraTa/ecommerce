@@ -23,10 +23,14 @@
     "react/prefer-stateless-function":"off",
     "react/prop-types": "off",
     "react/destructuring-assignment":"off",
+
     "arrow-body-style":"off",
     "react/no-access-state-in-setstate":"off",
     "object-curly-newline":"off",
-    "max-len": "off"
+    "max-len": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/display-name": "off",
+    "operator-linebreak": "off"
   },
   "ignorePatterns": [ 
     "dist/",

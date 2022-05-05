@@ -175,7 +175,6 @@ text-align: start;
   width:  354px;
   height: 330px;
   background-size: cover;
-
 }
 
 .listing-card-desc{
@@ -219,6 +218,92 @@ text-align: start;
   font-size: 24px;
   line-height: 160%;
   color: #8D8F9A;
+}
+
+/* PDP */
+.pdp-wrapper{
+  display: flex;
+  margin-top: 72px;
+  height: 790px;
+  gap: 35px;
+}
+.variant-img-container{
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  cursor: pointer;
+}
+
+.variant-img{
+  width: 79px;
+  height: 80px;
+  background-size: cover;
+}
+
+.variant-main-img{
+  width: 610px;
+  height: 511px;
+  background-size: cover;
+}
+
+
+
+/* pdp variants */
+.pdp-desc{
+  width: 292px;
+  margin-left: 65px;
+}
+
+.pdp-desc-header{
+  margin-bottom: 43px;
+}
+.desc-brand{
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 27px;
+  margin: 0 0 16px;
+}
+.desc-product-name{
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 27px;
+  margin: 0;
+}
+
+.desc-h5 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  margin: 0;
+}
+
+.sizes-container{
+  display: flex;
+  gap: 13px;
+  margin: 8px 0 24px;
+}
+
+.size-box{
+  width: 63px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--c-text);
+}
+.desc-add-cart{
+  margin: 20px 0 40px;
+}
+
+.add-cart-btn{
+  width: 292px;
+  height: 52px;
+  color: #fff;
+  background-color: var(--c-primary);
+}
+
+.desc-product-desc p{
+
 }
 /* ** Responsiveness */
 

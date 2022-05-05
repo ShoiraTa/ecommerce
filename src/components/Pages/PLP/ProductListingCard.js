@@ -17,18 +17,18 @@ class ProductListingCard extends Component {
 
   componentDidMount() {
     this.setPrice();
-    console.log(this.props.prices);
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.currentCurrency !== this.props.currentCurrency) {
+    const { currentCurrency } = this.props;
+    if (prevProps.currentCurrency !== currentCurrency) {
       this.setPrice();
     }
   }
 
   setPrice = () => {
-    const price = this.props.prices.filter((price) => price.currency.label === this.props.currentCurrency.label);
-    console.log(price[0]);
+    const { prices, currentCurrency } = this.props;
+    const price = prices.filter((price) => price.currency.label === currentCurrency.label);
     this.setState({
       ...this.state,
       price: { amount: price[0].amount, label: price[0].currency.label, symbol: price[0].currency.symbol },
@@ -37,7 +37,7 @@ class ProductListingCard extends Component {
 
   render() {
     const { product, currentCategory } = this.props;
-
+    const { hover, price } = this.state;
     return (
       <div className={`listing-card-wrapper ${!product.inStock ? 'listing-card-out' : ''}`}>
         <Link
@@ -55,12 +55,12 @@ class ProductListingCard extends Component {
             )}
           </div>
           <div className="listing-card-desc">
-            {this.state.hover && product.inStock && <button type="button">{greenRound} </button>}
+            {hover && product.inStock && <button type="button">{greenRound} </button>}
             <h3>{product.name}</h3>
             <h4>
-              {this.state.price.symbol}
+              {price.symbol}
               &nbsp;
-              {this.state.price.amount}
+              {price.amount}
             </h4>
           </div>
         </Link>

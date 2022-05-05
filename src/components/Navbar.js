@@ -30,29 +30,34 @@ class Navbar extends Component {
   }
 
   toggleDropdown = () => {
-    this.setState({ dropdownOpen: !this.state.dropdownOpen });
+    const { dropdownOpen } = this.state;
+    this.setState({ dropdownOpen: !dropdownOpen });
   };
 
   render() {
     const { dropdownOpen } = this.state;
-    const { currentCurrency, currencies, categories, currentCategory } = this.props.headerReducer;
+    const { setCategory, headerReducer, setCurrency } = this.props;
+    const { currentCurrency, currencies, categories, currentCategory } = headerReducer;
     return (
       <header className="container">
         <nav>
           <ul>
             <li className="nav-left-group">
               <ul>
-                {categories?.map((category) => (
-                  <li key={category.name}>
-                    <Link
-                      to={category.name}
-                      className={currentCategory === category.name ? 'nav-link-active' : 'c-text'}
-                      onClick={() => this.props.setCategory(category.name)}
-                    >
-                      {category.name}
-                    </Link>
-                  </li>
-                ))}
+                {categories?.map((category) => {
+                  const { name } = category;
+                  return (
+                    <li key={name}>
+                      <Link
+                        to={name}
+                        className={currentCategory === name ? 'nav-link-active' : 'c-text'}
+                        onClick={() => setCategory(name)}
+                      >
+                        {name}
+                      </Link>
+                    </li>
+                  );
+                })}
               </ul>
             </li>
             <li className="nav-middle-group">
@@ -78,7 +83,7 @@ class Navbar extends Component {
                               type="button"
                               className={i % 2 === 1 ? 'b-gray' : ''}
                               onClick={() => {
-                                this.props.setCurrency(currency.label, currency.symbol);
+                                setCurrency(currency.label, currency.symbol);
                                 this.toggleDropdown();
                               }}
                             >

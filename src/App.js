@@ -14,7 +14,7 @@ class App extends Component {
         <Routes>
           <Route path="/" element={<ProductListingPage />} />
           <Route path="/:category" element={<ProductListingPage />} />
-          <Route path="/:category/:id" element={<ProductDescriptionPage />} />
+          <Route path="/:category/:productId" element={<ProductDescriptionPage />} />
         </Routes>
       </Router>
     );
