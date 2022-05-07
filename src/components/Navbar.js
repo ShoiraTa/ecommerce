@@ -8,6 +8,7 @@ import { setCurrency, getCurrencies } from '../redux/reducers/global/pricesReduc
 const mapStateToProps = (state) => ({
   headerReducer: state.headerReducer,
   pricesReducer: state.pricesReducer,
+  cartReducer: state.cartReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({

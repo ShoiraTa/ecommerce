@@ -4,17 +4,17 @@ const initState = {
   products: [],
 };
 
-const pdpReducer = (state = initState, action) => {
+const cartReducer = (state = initState, action) => {
   switch (action.type) {
-    case actionType.FETCH_PRODUCT:
+    case actionType.ADD_TO_CART:
       return {
         ...state,
-        product: action.payload,
-        pdpLoading: false,
+        products: [...state.products, action.payload],
       };
+
     default:
       return state;
   }
 };
 
-export default pdpReducer;
+export default cartReducer;

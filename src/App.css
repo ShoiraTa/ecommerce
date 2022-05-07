@@ -285,7 +285,23 @@ text-align: start;
   margin: 8px 0 24px;
 }
 
-.size-box{
+.color-box{
+  width: 32px;
+  height: 32px;
+}
+.selected-text-box {
+  position: relative;
+}
+.selected-text-box .selected-color-border{
+  height: 34px;
+    width: 34px;
+    top: -2px;
+  left: -2px;
+  border: 1px solid var(--c-primary);
+  position: absolute;
+}
+
+.text-box {
   width: 63px;
   height: 45px;
   display: flex;
@@ -294,10 +310,11 @@ text-align: start;
   border: 1px solid var(--c-text);
 }
 
-.color-box{
-  width: 32px;
-  height: 32px;
+.selected-text-box > button {
+  background-color: #1D1F22;
+  color: #FFF;
 }
+
 .desc-add-cart{
   margin: 20px 0 40px;
 }
@@ -310,6 +327,10 @@ text-align: start;
   font-weight: 600;
   font-size: 16px;
   line-height: 120%;
+}
+
+.add-cart-btn:hover{
+  background-color: #5ece7cd6;
 }
 
 .desc-priceBox{

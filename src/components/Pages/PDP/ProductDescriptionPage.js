@@ -1,25 +1,29 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getProduct } from '../../../redux/reducers/pdp/pdpReducerActions';
 import ProductVariants from './ProductVariants';
 import { getProductPrice } from '../../../redux/reducers/global/pricesReducerActions';
+import ProductDescriptionImages from './ProductDescriptionImages';
+import { addProductToCart } from '../../../redux/reducers/cart/cartReducerActions';
 
-function withParams(Component) {
-  return (props) => <Component {...props} params={useParams()} />;
+function withParams(PureComponent) {
+  return (props) => <PureComponent {...props} params={useParams()} />;
 }
 
 const mapStateToProps = (state) => ({
   pdpReducer: state.pdpReducer,
   pricesReducer: state.pricesReducer,
+  cartReducer: state.cartReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getProduct: (id) => dispatch(getProduct(id)),
   getProductPrice: (id) => dispatch(getProductPrice(id)),
+  addProductToCart: (product) => dispatch(addProductToCart(product)),
 });
 
-class ProductDescriptionPage extends Component {
+class ProductDescriptionPage extends PureComponent {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,18 +33,15 @@ class ProductDescriptionPage extends Component {
 
   componentDidMount() {
     const { productId } = this.props.params;
-    const { getProduct, pdpReducer, pricesReducer, getProductPrice } = this.props;
+    const { getProduct, pricesReducer, getProductPrice } = this.props;
     getProduct(productId);
-    if (!pdpReducer.pdpLoading) {
-      this.setState({ productImg: pdpReducer.product.gallery[0] });
-      getProductPrice({ id: productId, currency: pricesReducer.currentCurrency.label });
-    }
+    getProductPrice({ id: productId, currency: pricesReducer.currentCurrency.label });
   }
 
   componentDidUpdate(prevProps) {
     const { productId } = this.props.params;
     const { pdpReducer, pricesReducer, getProductPrice } = this.props;
-    if (prevProps.pdpReducer.product.gallery !== pdpReducer.product.gallery && !pdpReducer.pdpLoading) {
+    if (prevProps.pdpReducer.product.gallery !== pdpReducer.product.gallery && !pdpReducer.productLoading) {
       this.setState({ productImg: pdpReducer.product.gallery[0] });
     }
     if (prevProps.pricesReducer.currentCurrency.label !== pricesReducer.currentCurrency.label) {
@@ -49,39 +50,30 @@ class ProductDescriptionPage extends Component {
   }
 
   render() {
-    const { pdpReducer, pricesReducer } = this.props;
-    const { pdpLoading, product } = pdpReducer;
-    const { gallery, brand, name, attributes, description } = product;
+    const { pdpReducer, pricesReducer, addProductToCart } = this.props;
+    const { productLoading, product } = pdpReducer;
+    const { gallery, brand, name, attributes, description, id, prices } = product;
     const { productImg } = this.state;
-
-    return pdpLoading && pricesReducer.pricesLoading ? (
+    // console.log(this.props.cartReducer.products);
+    return !productLoading && pricesReducer.pricesLoading ? (
       <div className="text-center">Loading...</div>
     ) : (
       <div className="container">
         <div className="pdp-wrapper">
-          <div className="pdp-variats">
-            <div className="variant-img-container">
-              {gallery &&
-                gallery.map((image) => (
-                  <div
-                    aria-hidden="true"
-                    key={image}
-                    className="variant-img"
-                    style={{ backgroundImage: `url(${image})` }}
-                    onClick={() => this.setState({ productImg: image })}
-                  />
-                ))}
-            </div>
-          </div>
-          <div className="pdp-image">
-            <div className="variant-main-img" style={{ backgroundImage: `url(${productImg})` }} />
-          </div>
+          <ProductDescriptionImages
+            gallery={gallery}
+            productImg={productImg}
+            setImage={(image) => this.setState({ productImg: image })}
+          />
           <ProductVariants
             brand={brand}
             name={name}
             attributes={attributes}
             description={description}
             price={pricesReducer.productPrice}
+            addProductToCart={addProductToCart}
+            id={id}
+            prices={prices}
           />
         </div>
       </div>

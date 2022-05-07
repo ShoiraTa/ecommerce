@@ -32,7 +32,7 @@ class ProductListingPage extends Component {
     const { currentCategory } = headerReducer;
     const { currentCurrency } = pricesReducer;
     const { products } = pdpReducer;
-
+    console.log(this.props);
     return (
       <section className="container-sm">
         <div className="products-listing-wrapper">
