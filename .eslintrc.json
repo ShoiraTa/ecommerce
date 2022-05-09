@@ -36,7 +36,8 @@
     "implicit-arrow-linebreak": "off",
     "function-paren-newline": "off", 
     "no-confusing-arrow":"off",
-    "comma-dangle" : "off"
+    "comma-dangle" : "off",
+    "no-param-reassign" :"off"
 
   },
   "ignorePatterns": [ 

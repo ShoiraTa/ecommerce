@@ -79,8 +79,8 @@ class ProductVariants extends Component {
               {pricesReducer.productPrice.amount && pricesReducer.productPrice.amount}
             </div>
           </div>
-          <div className="variants-add-cart">
-            {page === 'pdp' && (
+          {page === 'pdp' && (
+            <div className="variants-add-cart">
               <button
                 type="button"
                 className="add-cart-btn"
@@ -88,8 +88,8 @@ class ProductVariants extends Component {
               >
                 ADD TO CART
               </button>
-            )}
-          </div>
+            </div>
+          )}
           <div className="variants-product-variants">
             <p>{description && this.filterDescription(description)}</p>
           </div>
@@ -97,11 +97,13 @@ class ProductVariants extends Component {
         {page === 'cart' && (
           <div className="cart-slider">
             <div className="cart-buttons-wrapper">
-              <button type="button" onClick={() => updateQty(id, 'add')}>
+              <button type="button" onClick={() => updateQty(id, 'substract')}>
                 {plusSquare}
               </button>
               <span className="cart-item-qty">{qty}</span>
-              <button type="button">{minusSquare}</button>
+              <button type="button" onClick={() => updateQty(id, 'add')}>
+                {minusSquare}
+              </button>
             </div>
             <Slider gallery={gallery} />
           </div>

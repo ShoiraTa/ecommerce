@@ -39,7 +39,7 @@ class Navbar extends Component {
 
   render() {
     const { dropdownOpen } = this.state;
-    const { setCategory, headerReducer, pricesReducer, setCurrency } = this.props;
+    const { setCategory, headerReducer, pricesReducer, setCurrency, cartReducer } = this.props;
     const { categories, currentCategory } = headerReducer;
     const { currentCurrency, currencies } = pricesReducer;
     return (
@@ -103,6 +103,7 @@ class Navbar extends Component {
                 </li>
                 <li>
                   <Link to="/cart" className="cart-svg">
+                    {cartReducer.totalQty ? <div className="cart-total-icon">{cartReducer.totalQty}</div> : null}
                     {cartSvg}
                   </Link>
                 </li>

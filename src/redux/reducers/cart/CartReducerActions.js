@@ -62,11 +62,7 @@ export const updateQty = (id, action) => ({
   payload: { action, id },
 });
 
-// name: props.name,
-// brand: props.brand,
-// prices: props.prices,
-// id: props.id,
-// productAttributes: props.attributes,
-// qty: 1,
-
-export const fn = () => {};
+export const getTotal = (label) => ({
+  type: actionType.GET_TOTAL,
+  payload: label,
+});
