@@ -5,7 +5,7 @@ class Attributes extends Component {
 
   render() {
     const { attributes, selectedAttrtibutes } = this.props;
-    console.log(attributes, selectedAttrtibutes);
+    // console.log(attributes, selectedAttrtibutes);
     return (
       <div>
         {attributes &&
@@ -13,7 +13,7 @@ class Attributes extends Component {
             return (
               <div key={attribute.id}>
                 <div>
-                  <h5 className="desc-h5">{attribute.name}</h5>
+                  <h5 className="variants-h5">{attribute.name}</h5>
                 </div>
                 <div className="sizes-container">
                   {attribute.items.map((attr) => (

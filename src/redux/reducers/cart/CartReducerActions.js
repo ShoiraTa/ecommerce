@@ -46,7 +46,6 @@ export const addProductToCart = (product) => async (dispatch) => {
     headers,
   })
     .then((response) => {
-      console.log(response);
       dispatch({
         type: actionType.ADD_TO_CART,
         payload: {

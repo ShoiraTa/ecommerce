@@ -101,7 +101,11 @@ class Navbar extends Component {
                     </ul>
                   )}
                 </li>
-                <li>{cartSvg}</li>
+                <li>
+                  <Link to="/cart" className="cart-svg">
+                    {cartSvg}
+                  </Link>
+                </li>
               </ul>
             </li>
           </ul>

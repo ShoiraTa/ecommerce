@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getProduct } from '../../../redux/reducers/pdp/pdpReducerActions';
 import ProductVariants from './ProductVariants';
-import { getProductPrice } from '../../../redux/reducers/global/pricesReducerActions';
 import ProductDescriptionImages from './ProductDescriptionImages';
 import { addProductToCart } from '../../../redux/reducers/cart/cartReducerActions';
 
@@ -19,7 +18,6 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   getProduct: (id) => dispatch(getProduct(id)),
-  getProductPrice: (id) => dispatch(getProductPrice(id)),
   addProductToCart: (product) => dispatch(addProductToCart(product)),
 });
 
@@ -33,19 +31,14 @@ class ProductDescriptionPage extends PureComponent {
 
   componentDidMount() {
     const { productId } = this.props.params;
-    const { getProduct, pricesReducer, getProductPrice } = this.props;
+    const { getProduct } = this.props;
     getProduct(productId);
-    getProductPrice({ id: productId, currency: pricesReducer.currentCurrency.label });
   }
 
   componentDidUpdate(prevProps) {
-    const { productId } = this.props.params;
-    const { pdpReducer, pricesReducer, getProductPrice } = this.props;
+    const { pdpReducer } = this.props;
     if (prevProps.pdpReducer.product.gallery !== pdpReducer.product.gallery && !pdpReducer.productLoading) {
       this.setState({ productImg: pdpReducer.product.gallery[0] });
-    }
-    if (prevProps.pricesReducer.currentCurrency.label !== pricesReducer.currentCurrency.label) {
-      getProductPrice({ id: productId, currency: pricesReducer.currentCurrency.label });
     }
   }
 
@@ -54,7 +47,8 @@ class ProductDescriptionPage extends PureComponent {
     const { productLoading, product } = pdpReducer;
     const { gallery, brand, name, attributes, description, id, prices } = product;
     const { productImg } = this.state;
-    // console.log(this.props.cartReducer.products);
+    const { productId } = this.props.params;
+
     return !productLoading && pricesReducer.pricesLoading ? (
       <div className="text-center">Loading...</div>
     ) : (
@@ -70,10 +64,11 @@ class ProductDescriptionPage extends PureComponent {
             name={name}
             attributes={attributes}
             description={description}
-            price={pricesReducer.productPrice}
             addProductToCart={addProductToCart}
             id={id}
             prices={prices}
+            productId={productId}
+            page="pdp"
           />
         </div>
       </div>
