@@ -56,6 +56,12 @@ export const addProductToCart = (product) => async (dispatch) => {
     })
     .catch((error) => console.log(error));
 };
+
+export const updateQty = (id, action) => ({
+  type: actionType.CART_UPDATE_PRODUCT_QTY,
+  payload: { action, id },
+});
+
 // name: props.name,
 // brand: props.brand,
 // prices: props.prices,

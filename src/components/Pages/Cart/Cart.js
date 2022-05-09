@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ProductVariants from '../PDP/ProductVariants';
-import { addProductToCart } from '../../../redux/reducers/cart/cartReducerActions';
+import { addProductToCart, updateQty } from '../../../redux/reducers/cart/cartReducerActions';
 
 const mapStateToProps = (state) => ({
   pdpReducer: state.pdpReducer,
@@ -11,11 +11,12 @@ const mapStateToProps = (state) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   addProductToCart: (product) => dispatch(addProductToCart(product)),
+  updateQty: (id, action) => dispatch(updateQty(id, action)),
 });
 
 class Cart extends Component {
   render() {
-    const { cartReducer } = this.props;
+    const { cartReducer, updateQty } = this.props;
     console.log(cartReducer.products);
     return (
       <div className="container">
@@ -25,7 +26,9 @@ class Cart extends Component {
             {cartReducer.products &&
               cartReducer.products.map((item) => {
                 const { product } = item;
-                // console.log(product);
+                const { selected } = item;
+
+                console.log(selected);
                 return (
                   <div key={product.id} className="product-wrapper">
                     <ProductVariants
@@ -39,6 +42,8 @@ class Cart extends Component {
                       // addProductToCart={addProductToCart}
                       id={product.id}
                       prices={product.prices}
+                      qty={selected.qty}
+                      updateQty={updateQty}
                     />
                   </div>
                 );
