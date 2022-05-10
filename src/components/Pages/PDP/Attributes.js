@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 
 class Attributes extends Component {
   setSelected = (selectedAttrtibutes, cartSelectedAttributes, attribute, attr) => {
-    if (selectedAttrtibutes.length > 0) {
-      return selectedAttrtibutes.some((a) => a.selected === attr.value && a.label === attribute.name && attribute.name)
-        ? 'selected-text-box'
-        : '';
-    }
     if (cartSelectedAttributes) {
       return cartSelectedAttributes.some(
         (a) => a.selected === attr.value && a.label === attribute.name && attribute.name
@@ -14,12 +9,18 @@ class Attributes extends Component {
         ? 'selected-text-box'
         : '';
     }
+    if (selectedAttrtibutes.length > 0) {
+      return selectedAttrtibutes.some((a) => a.selected === attr.value && a.label === attribute.name && attribute.name)
+        ? 'selected-text-box'
+        : '';
+    }
+
     return null;
   };
 
   render() {
     const { attributes, selectedAttrtibutes, cartSelectedAttributes } = this.props;
-    console.log(attributes, selectedAttrtibutes);
+    // console.log(attributes, selectedAttrtibutes);
     return (
       <div>
         {attributes &&

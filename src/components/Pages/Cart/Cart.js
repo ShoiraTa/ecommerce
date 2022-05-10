@@ -32,9 +32,8 @@ class Cart extends Component {
   }
 
   render() {
-    const { cartReducer, updateQty } = this.props;
+    const { cartReducer, updateQty, addProductToCart } = this.props;
     const { total, products, totalQty, tax } = cartReducer;
-    // console.log(products);
     return (
       <div className="container">
         <div className="cart-wrapper">
@@ -44,22 +43,16 @@ class Cart extends Component {
               products.map((item) => {
                 const { product } = item;
                 const { selected } = item;
-                // console.log('here', selected.selectedAttrtibutes);
                 return (
                   <div key={product.id + selected.selectedAttrtibutes[0].selected} className="product-wrapper">
                     <ProductVariants
-                      brand={product.brand}
-                      name={product.name}
-                      attributes={product.attributes}
-                      description={product.description}
                       productId={product.id}
+                      product={product}
                       page="cart"
-                      gallery={product.gallery}
-                      id={product.id}
-                      prices={product.prices}
-                      qty={selected.qty}
                       updateQty={updateQty}
+                      qty={selected.qty}
                       cartSelectedAttributes={selected.selectedAttrtibutes}
+                      addProductToCart={addProductToCart}
                     />
                   </div>
                 );

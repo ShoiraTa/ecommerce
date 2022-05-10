@@ -10,7 +10,27 @@ const initState = {
 const cartReducer = (state = initState, action) => {
   switch (action.type) {
     case actionType.ADD_TO_CART:
-      console.log(action.payload);
+      const idx = state.products.findIndex((product) => product.selected.id === action.payload.selected.id);
+      const newArr = [...state.products];
+      let dublicate = false;
+      if (idx >= 0) {
+        state.products[idx].selected.selectedAttrtibutes.forEach((attribute) => {
+          action.payload.selected.selectedAttrtibutes.forEach((selectedAttr) => {
+            if (selectedAttr.label === attribute.label) {
+              if (selectedAttr.selected === attribute.selected) dublicate = true;
+            }
+          });
+        });
+        if (dublicate === true) {
+          newArr[idx].selected.qty += 1;
+          return {
+            ...state,
+            products: newArr,
+            totalQty: state.totalQty + 1,
+          };
+        }
+      }
+
       return {
         ...state,
         products: [...state.products, action.payload],

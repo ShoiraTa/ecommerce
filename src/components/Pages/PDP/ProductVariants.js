@@ -74,21 +74,9 @@ class ProductVariants extends Component {
   };
 
   render() {
-    const {
-      brand,
-      name,
-      attributes,
-      description,
-      id,
-      addProductToCart,
-      page,
-      gallery,
-      qty,
-      updateQty,
-      cartSelectedAttributes,
-    } = this.props;
+    const { addProductToCart, page, qty, updateQty, cartSelectedAttributes, product } = this.props;
+    const { brand, name, attributes, description, gallery, id } = product;
 
-    // console.log(pricesReducer.productPrice);
     return (
       <div className="pdp-variants">
         <div className="pdp-variants-wrapper">
@@ -125,11 +113,11 @@ class ProductVariants extends Component {
         {page === 'cart' && (
           <div className="cart-slider">
             <div className="cart-buttons-wrapper">
-              <button type="button" onClick={() => updateQty(id, 'substract')}>
+              <button type="button" onClick={() => updateQty(id, 'add')}>
                 {plusSquare}
               </button>
               <span className="cart-item-qty">{qty}</span>
-              <button type="button" onClick={() => updateQty(id, 'add')}>
+              <button type="button" onClick={() => updateQty(id, 'substract')}>
                 {minusSquare}
               </button>
             </div>

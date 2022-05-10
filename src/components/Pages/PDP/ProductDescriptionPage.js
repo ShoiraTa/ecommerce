@@ -43,11 +43,11 @@ class ProductDescriptionPage extends PureComponent {
   }
 
   render() {
-    const { pdpReducer, pricesReducer, addProductToCart } = this.props;
+    const { pdpReducer, pricesReducer, addProductToCart, params } = this.props;
     const { productLoading, product } = pdpReducer;
-    const { gallery, brand, name, attributes, description, id, prices } = product;
+    const { gallery } = product;
     const { productImg } = this.state;
-    const { productId } = this.props.params;
+    const { productId } = params;
 
     return !productLoading && pricesReducer.pricesLoading ? (
       <div className="text-center">Loading...</div>
@@ -59,17 +59,7 @@ class ProductDescriptionPage extends PureComponent {
             productImg={productImg}
             setImage={(image) => this.setState({ productImg: image })}
           />
-          <ProductVariants
-            brand={brand}
-            name={name}
-            attributes={attributes}
-            description={description}
-            addProductToCart={addProductToCart}
-            id={id}
-            prices={prices}
-            productId={productId}
-            page="pdp"
-          />
+          <ProductVariants product={product} addProductToCart={addProductToCart} productId={productId} page="pdp" />
         </div>
       </div>
     );
