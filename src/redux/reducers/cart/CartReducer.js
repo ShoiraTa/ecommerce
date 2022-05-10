@@ -16,6 +16,7 @@ const cartReducer = (state = initState, action) => {
         products: [...state.products, action.payload],
         totalQty: state.totalQty + 1,
       };
+
     case actionType.CART_UPDATE_PRODUCT_QTY:
       const index = state.products.findIndex((product) => product.selected.id === action.payload.id);
       let newProducts = [...state.products];

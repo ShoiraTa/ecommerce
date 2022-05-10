@@ -29,11 +29,11 @@ export const getCurrencies = async (dispatch) => {
   });
 };
 
-export const getProductPrice = (id) => async (dispatch) => {
+export const getProductPrice = (data) => async (dispatch) => {
   const getProductPrice = {
     operationName: 'getProductPrice',
     query: `query getProductPrice 
-    { product(id: "${id.id}" ) {
+    { product(id: "${data.id}" ) {
         id
         prices {
           currency {
@@ -59,7 +59,8 @@ export const getProductPrice = (id) => async (dispatch) => {
         type: actionType.FETCH_PRODUCT_PRICE,
         payload: {
           prices: response.data.data.product.prices,
-          currency: id.currency,
+          currency: data.currency,
+          id: data.id,
         },
       });
     })

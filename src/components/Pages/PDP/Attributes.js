@@ -1,11 +1,25 @@
 import React, { Component } from 'react';
 
 class Attributes extends Component {
-  setSelectedClass = () => {};
+  setSelected = (selectedAttrtibutes, cartSelectedAttributes, attribute, attr) => {
+    if (selectedAttrtibutes.length > 0) {
+      return selectedAttrtibutes.some((a) => a.selected === attr.value && a.label === attribute.name && attribute.name)
+        ? 'selected-text-box'
+        : '';
+    }
+    if (cartSelectedAttributes) {
+      return cartSelectedAttributes.some(
+        (a) => a.selected === attr.value && a.label === attribute.name && attribute.name
+      )
+        ? 'selected-text-box'
+        : '';
+    }
+    return null;
+  };
 
   render() {
-    const { attributes, selectedAttrtibutes } = this.props;
-    // console.log(attributes, selectedAttrtibutes);
+    const { attributes, selectedAttrtibutes, cartSelectedAttributes } = this.props;
+    console.log(attributes, selectedAttrtibutes);
     return (
       <div>
         {attributes &&
@@ -19,13 +33,7 @@ class Attributes extends Component {
                   {attribute.items.map((attr) => (
                     <div
                       key={attr.displayValue}
-                      className={
-                        selectedAttrtibutes.some(
-                          (a) => a.selected === attr.value && a.label === attribute.name && attribute.name
-                        )
-                          ? 'selected-text-box'
-                          : ''
-                      }
+                      className={this.setSelected(selectedAttrtibutes, cartSelectedAttributes, attribute, attr)}
                     >
                       <button
                         onClick={() => this.props.setAttributes({ label: attribute.name, selected: attr.value })}

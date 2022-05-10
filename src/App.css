@@ -282,7 +282,7 @@ text-align: start;
 .pdp-variants{
   display: flex;
   justify-content: space-between;
-  height: 280px;
+  /* height: 280px; */
   /* width: 292px; */
   /* margin-left: 65px; */
 }

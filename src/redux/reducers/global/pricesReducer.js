@@ -6,7 +6,7 @@ const initState = {
     label: 'USD',
     symbol: '$',
   },
-  productPrice: { amount: 0, label: '', symbol: '' },
+  productPrice: [],
 };
 
 const pricesReducer = (state = initState, action) => {
@@ -28,9 +28,13 @@ const pricesReducer = (state = initState, action) => {
       return {
         ...state,
         productPrice: {
-          amount: price[0].amount,
-          label: price[0].currency.label,
-          symbol: price[0].currency.symbol,
+          ...state.productPrice,
+          [action.payload.id]: {
+            amount: price[0].amount,
+            label: price[0].currency.label,
+            symbol: price[0].currency.symbol,
+            id: action.payload.id,
+          },
         },
         pricesLoading: false,
       };

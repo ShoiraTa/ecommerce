@@ -57,9 +57,38 @@ class ProductVariants extends Component {
     return desc.replace(/<\/?p[^>]*>/g, '');
   };
 
+  setPrice = () => {
+    const { productId, pricesReducer } = this.props;
+    const { productPrice } = pricesReducer;
+    return Object.values(productPrice).map((product) => {
+      if (product.id === productId) {
+        return (
+          <span key={product.amount}>
+            {product.symbol}
+            {product.amount}
+          </span>
+        );
+      }
+      return null;
+    });
+  };
+
   render() {
-    const { brand, name, attributes, description, id, addProductToCart, pricesReducer, page, gallery, qty, updateQty } =
-      this.props;
+    const {
+      brand,
+      name,
+      attributes,
+      description,
+      id,
+      addProductToCart,
+      page,
+      gallery,
+      qty,
+      updateQty,
+      cartSelectedAttributes,
+    } = this.props;
+
+    // console.log(pricesReducer.productPrice);
     return (
       <div className="pdp-variants">
         <div className="pdp-variants-wrapper">
@@ -71,13 +100,12 @@ class ProductVariants extends Component {
             attributes={attributes}
             setAttributes={this.setAttributes}
             selectedAttrtibutes={this.state.selectedAttrtibutes}
+            cartSelectedAttributes={cartSelectedAttributes}
+            page={page}
           />
           <div className="variants-price">
             <h3 className="variants-h5">PRICE</h3>
-            <div className="variants-priceBox">
-              {pricesReducer.productPrice.amount && pricesReducer.productPrice.symbol}
-              {pricesReducer.productPrice.amount && pricesReducer.productPrice.amount}
-            </div>
+            <div className="variants-priceBox">{this.setPrice()}</div>
           </div>
           {page === 'pdp' && (
             <div className="variants-add-cart">
