@@ -27,11 +27,19 @@ class ProductListingCard extends Component {
     }
   }
 
-  setHover = (area) => {
+  setHoverCart = () => {
     this.setState({
       ...this.state,
-      [area]: !this.state[area],
+      hoverCart: !this.state.hoverCart,
     });
+  };
+
+  setHoverAddBtn = (e) => {
+    e.preventDefault();
+    this.setState({
+      hoverCart: true,
+    });
+    this.props.toggleMinicart();
   };
 
   setPrice = () => {
@@ -44,15 +52,15 @@ class ProductListingCard extends Component {
   };
 
   render() {
-    const { product, currentCategory, setPopup } = this.props;
+    const { product, currentCategory } = this.props;
     const { hoverCart, hoverAddBtn, price } = this.state;
     return (
       <div className={`listing-card-wrapper ${!product.inStock ? 'listing-card-out' : ''}`}>
         <Link
           to={!product.inStock || hoverAddBtn === true ? '#' : `/${currentCategory}/${product.id}`}
           className={product.inStock ? '' : 'cursor-default'}
-          onMouseEnter={() => this.setHover('hoverCart')}
-          onMouseLeave={() => this.setHover('hoverCart')}
+          onMouseEnter={() => this.setHoverCart()}
+          onMouseLeave={() => this.setHoverCart()}
         >
           <div className="listing-card-img-container">
             <div className="listing-card-img" style={{ backgroundImage: `url(${product.gallery[0]})` }} />
@@ -64,13 +72,7 @@ class ProductListingCard extends Component {
           </div>
           <div className="listing-card-desc">
             {hoverCart && product.inStock && (
-              <button
-                className="listing-card-add-btn"
-                type="button"
-                onMouseEnter={() => this.setHover('hoverAddBtn')}
-                onMouseLeave={() => this.setHover('hoverAddBtn')}
-                onClick={() => setPopup()}
-              >
+              <button className="listing-card-add-btn" type="button" onClick={(e) => this.setHoverAddBtn(e)}>
                 {greenRound}{' '}
               </button>
             )}

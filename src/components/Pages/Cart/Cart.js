@@ -102,8 +102,8 @@ class Cart extends Component {
               <div className="minicart-total">
                 <p>Total</p>
                 <p>
-                  {total.symbol}&nbsp;
-                  {total.total.toFixed(2)}
+                  {total.symbol && total.symbol}&nbsp;
+                  {total.total && total.total.toFixed(2)}
                 </p>
               </div>
               <div className="minicart-btn">

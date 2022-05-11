@@ -35,7 +35,7 @@ class ProductListingPage extends Component {
     }
   }
 
-  setPopup = () => {
+  toggleMinicart = () => {
     this.setState({
       ...this.state,
       showPopup: !this.state.showPopup,
@@ -48,12 +48,12 @@ class ProductListingPage extends Component {
     const { currentCategory } = headerReducer;
     const { currentCurrency } = pricesReducer;
     const { products } = pdpReducer;
-    // console.log(this.props);
+    console.log(this.props);
     return (
       <section className="container-sm" style={{ position: showPopup ? 'fixed' : null }}>
         <div className="products-listing-wrapper">
           <h1>{currentCategory}</h1>
-          {showPopup && <Minicart setPopup={this.setPopup} />}
+          {showPopup && <Minicart show={this.state.showPopup} onClickOutside={() => this.toggleMinicart()} />}
 
           <div className="products-container">
             <div className="products-grid">
@@ -65,7 +65,7 @@ class ProductListingPage extends Component {
                     product={product}
                     currentCategory={currentCategory}
                     currentCurrency={currentCurrency}
-                    setPopup={this.setPopup}
+                    toggleMinicart={this.toggleMinicart}
                   />
                 );
               })}

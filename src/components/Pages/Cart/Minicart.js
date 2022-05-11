@@ -2,12 +2,33 @@ import React, { Component } from 'react';
 import Cart from './Cart';
 
 class Minicart extends Component {
+  constructor(props) {
+    super(props);
+    this.ref = React.createRef();
+    this.handleClickOutside = this.handleClickOutside.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('click', this.handleClickOutside, true);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.handleClickOutside, true);
+  }
+
+  handleClickOutside(event) {
+    if (this.ref.current && !this.ref.current.contains(event.target)) {
+      return this.props.onClickOutside && this.props.onClickOutside();
+    }
+    return null;
+  }
+
   render() {
-    const { setPopup } = this.props;
+    if (!this.props.show) return null;
     return (
-      <div aria-hidden="true" className="minicart-wrapper" onClick={setPopup} onKeyDown={setPopup}>
-        <div className="minicart">
-          <Cart page="minicart" onClick={(e) => e.stopPropagation()} />
+      <div aria-hidden="true" className="minicart-wrapper">
+        <div className="minicart" ref={this.ref}>
+          <Cart page="minicart" />
         </div>
       </div>
     );

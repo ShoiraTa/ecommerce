@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { cartSvg, smallArrowDown, greenCartSvg, smallArrowUp } from '../assets/svgIcons';
 import { getCategories, setCategory } from '../redux/reducers/header/headerReducerActions';
 import { setCurrency, getCurrencies } from '../redux/reducers/global/pricesReducerActions';
+import NavbarDropdown from './NavbarDropdown';
 
 const mapStateToProps = (state) => ({
   headerReducer: state.headerReducer,
@@ -79,26 +80,13 @@ class Navbar extends Component {
                     {dropdownOpen ? smallArrowUp : smallArrowDown}
                   </button>
                   {dropdownOpen && (
-                    <ul className="dropdown">
-                      {currencies.map((currency, i) => {
-                        return (
-                          <li key={currency.label}>
-                            <button
-                              type="button"
-                              className={i % 2 === 1 ? 'b-gray' : ''}
-                              onClick={() => {
-                                setCurrency(currency.label, currency.symbol);
-                                this.toggleDropdown();
-                              }}
-                            >
-                              <span>{currency.symbol}</span>
-                              &nbsp;&nbsp;
-                              <span>{currency.label}</span>
-                            </button>
-                          </li>
-                        );
-                      })}
-                    </ul>
+                    <NavbarDropdown
+                      setCurrency={setCurrency}
+                      currencies={currencies}
+                      toggleDropdown={this.toggleDropdown}
+                      show={this.state.dropdownOpen}
+                      onClickOutside={() => this.toggleDropdown()}
+                    />
                   )}
                 </li>
                 <li>
