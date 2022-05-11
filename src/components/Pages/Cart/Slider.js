@@ -32,18 +32,20 @@ class Slider extends Component {
   };
 
   render() {
-    const { gallery } = this.props;
+    const { gallery, page } = this.props;
     const { slider } = this.state;
     return (
       <div className="cart-images-wrapper" style={{ backgroundImage: `url(${gallery[slider.imageIdx]})` }}>
-        <div className="slider-buttons-wrapper">
-          <button type="button" className="slider-prev" onClick={() => this.setSlider(gallery.length, 'prev')}>
-            {sliderPrev}
-          </button>
-          <button type="button" className="slider-next" onClick={() => this.setSlider(gallery.length, 'next')}>
-            {sliderNext}
-          </button>
-        </div>
+        {page === 'cart' && (
+          <div className="slider-buttons-wrapper">
+            <button type="button" className="slider-prev" onClick={() => this.setSlider(gallery.length, 'prev')}>
+              {sliderPrev}
+            </button>
+            <button type="button" className="slider-next" onClick={() => this.setSlider(gallery.length, 'next')}>
+              {sliderNext}
+            </button>
+          </div>
+        )}
       </div>
     );
   }

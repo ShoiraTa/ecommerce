@@ -44,9 +44,9 @@ class ProductDescriptionPage extends PureComponent {
 
   render() {
     const { pdpReducer, pricesReducer, addProductToCart, params } = this.props;
+    const { productImg } = this.state;
     const { productLoading, product } = pdpReducer;
     const { gallery } = product;
-    const { productImg } = this.state;
     const { productId } = params;
 
     return !productLoading && pricesReducer.pricesLoading ? (

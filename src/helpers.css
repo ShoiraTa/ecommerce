@@ -279,6 +279,10 @@
     max-width: calc(100% - 14%);
     margin: auto;
   }
+
+  .minicart .container{
+    max-width: calc(100% - 7%);
+  }
   .container-sm {
     width: calc(100% - 13%);
     margin: auto;

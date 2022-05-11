@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ProductVariants from '../PDP/ProductVariants';
 import { addProductToCart, updateQty, getTotal } from '../../../redux/reducers/cart/cartReducerActions';
@@ -32,12 +33,19 @@ class Cart extends Component {
   }
 
   render() {
-    const { cartReducer, updateQty, addProductToCart } = this.props;
+    const { cartReducer, updateQty, addProductToCart, page } = this.props;
     const { total, products, totalQty, tax } = cartReducer;
     return (
       <div className="container">
         <div className="cart-wrapper">
-          <h1>Cart</h1>
+          {page === 'minicart' ? (
+            <h1>
+              My Bag, <span>{totalQty}items</span>
+            </h1>
+          ) : (
+            <h1>Cart</h1>
+          )}
+
           <div className="cart-products-wrapper">
             {products &&
               products.map((item) => {
@@ -48,7 +56,7 @@ class Cart extends Component {
                     <ProductVariants
                       productId={product.id}
                       product={product}
-                      page="cart"
+                      page={page === 'minicart' ? 'minicart' : 'cart'}
                       updateQty={updateQty}
                       qty={selected.qty}
                       cartSelectedAttributes={selected.selectedAttrtibutes}
@@ -58,31 +66,61 @@ class Cart extends Component {
                 );
               })}
           </div>
-          {total.total ? (
-            <div className="cart-total">
-              <h4>
-                Tax {tax}%:&nbsp;
-                <strong>
-                  {((total.total / (100 + tax)) * tax).toFixed(2)}
-                  {total.symbol}
-                </strong>
-              </h4>
-              <h4>
-                Quantity:&nbsp;<strong>{totalQty}</strong>
-              </h4>
-              <h4>
-                Total:&nbsp;
-                <strong className="cart-total-item">
+          {page !== 'minicart' && (
+            <div>
+              {total.total ? (
+                <div className="cart-total">
+                  <h4>
+                    Tax {tax}%:&nbsp;
+                    <strong>
+                      {((total.total / (100 + tax)) * tax).toFixed(2)}
+                      {total.symbol}
+                    </strong>
+                  </h4>
+                  <h4>
+                    Quantity:&nbsp;<strong>{totalQty}</strong>
+                  </h4>
+                  <h4>
+                    Total:&nbsp;
+                    <strong className="cart-total-item">
+                      {total.symbol}&nbsp;
+                      {total.total.toFixed(2)}
+                    </strong>
+                  </h4>
+                  <button type="button" className="cart-order-btn">
+                    ORDER
+                  </button>
+                </div>
+              ) : (
+                <h3>Your cart is empty. Start adding products!</h3>
+              )}
+            </div>
+          )}
+
+          {page === 'minicart' && (
+            <div className="minicart-footer">
+              <div className="minicart-total">
+                <p>Total</p>
+                <p>
                   {total.symbol}&nbsp;
                   {total.total.toFixed(2)}
-                </strong>
-              </h4>
-              <button type="button" className="cart-order-btn">
-                ORDER
-              </button>
+                </p>
+              </div>
+              <div className="minicart-btn">
+                <Link to="/cart">
+                  <button className="btn view-bag-btn" type="button">
+                    {' '}
+                    VIEW BAG
+                  </button>
+                </Link>
+                <Link to="/cart">
+                  <button className="btn checkout-btn" type="button">
+                    {' '}
+                    CHECK OUT
+                  </button>
+                </Link>
+              </div>
             </div>
-          ) : (
-            <h3>Your cart is empty. Start adding products!</h3>
           )}
         </div>
       </div>

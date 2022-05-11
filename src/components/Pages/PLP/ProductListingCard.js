@@ -11,7 +11,8 @@ class ProductListingCard extends Component {
         label: '',
         symbol: '',
       },
-      hover: false,
+      hoverCart: false,
+      hoverAddBtn: false,
     };
   }
 
@@ -26,6 +27,13 @@ class ProductListingCard extends Component {
     }
   }
 
+  setHover = (area) => {
+    this.setState({
+      ...this.state,
+      [area]: !this.state[area],
+    });
+  };
+
   setPrice = () => {
     const { prices, currentCurrency } = this.props;
     const price = prices.filter((price) => price.currency.label === currentCurrency.label);
@@ -36,15 +44,15 @@ class ProductListingCard extends Component {
   };
 
   render() {
-    const { product, currentCategory } = this.props;
-    const { hover, price } = this.state;
+    const { product, currentCategory, setPopup } = this.props;
+    const { hoverCart, hoverAddBtn, price } = this.state;
     return (
       <div className={`listing-card-wrapper ${!product.inStock ? 'listing-card-out' : ''}`}>
         <Link
-          to={!product.inStock ? '#' : `/${currentCategory}/${product.id}`}
+          to={!product.inStock || hoverAddBtn === true ? '#' : `/${currentCategory}/${product.id}`}
           className={product.inStock ? '' : 'cursor-default'}
-          onMouseEnter={() => this.setState({ ...this.state, hover: true })}
-          onMouseLeave={() => this.setState({ ...this.state, hover: false })}
+          onMouseEnter={() => this.setHover('hoverCart')}
+          onMouseLeave={() => this.setHover('hoverCart')}
         >
           <div className="listing-card-img-container">
             <div className="listing-card-img" style={{ backgroundImage: `url(${product.gallery[0]})` }} />
@@ -55,7 +63,17 @@ class ProductListingCard extends Component {
             )}
           </div>
           <div className="listing-card-desc">
-            {hover && product.inStock && <button type="button">{greenRound} </button>}
+            {hoverCart && product.inStock && (
+              <button
+                className="listing-card-add-btn"
+                type="button"
+                onMouseEnter={() => this.setHover('hoverAddBtn')}
+                onMouseLeave={() => this.setHover('hoverAddBtn')}
+                onClick={() => setPopup()}
+              >
+                {greenRound}{' '}
+              </button>
+            )}
             <h3>{product.name}</h3>
             <h4>
               {price.symbol}

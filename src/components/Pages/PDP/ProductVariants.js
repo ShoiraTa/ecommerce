@@ -84,6 +84,11 @@ class ProductVariants extends Component {
             <h1 className="variants-brand">{brand}</h1>
             <h3 className="variants-product-name">{name}</h3>
           </div>
+          {page === 'minicart' && (
+            <div className="variants-price">
+              <div className="variants-priceBox">{this.setPrice()}</div>
+            </div>
+          )}
           <Attributes
             attributes={attributes}
             setAttributes={this.setAttributes}
@@ -91,10 +96,13 @@ class ProductVariants extends Component {
             cartSelectedAttributes={cartSelectedAttributes}
             page={page}
           />
-          <div className="variants-price">
-            <h3 className="variants-h5">PRICE</h3>
-            <div className="variants-priceBox">{this.setPrice()}</div>
-          </div>
+          {page === 'cart' && (
+            <div className="variants-price">
+              <h3 className="variants-h5">PRICE</h3>
+              <div className="variants-priceBox">{this.setPrice()}</div>
+            </div>
+          )}
+
           {page === 'pdp' && (
             <div className="variants-add-cart">
               <button
@@ -110,7 +118,7 @@ class ProductVariants extends Component {
             <p>{description && this.filterDescription(description)}</p>
           </div>
         </div>
-        {page === 'cart' && (
+        {page !== 'pdp' && (
           <div className="cart-slider">
             <div className="cart-buttons-wrapper">
               <button type="button" onClick={() => updateQty(id, 'add')}>
@@ -121,7 +129,7 @@ class ProductVariants extends Component {
                 {minusSquare}
               </button>
             </div>
-            <Slider gallery={gallery} />
+            <Slider page={page} gallery={gallery} />
           </div>
         )}
       </div>
