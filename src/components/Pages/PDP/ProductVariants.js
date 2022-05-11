@@ -7,6 +7,7 @@ import Slider from '../Cart/Slider';
 
 const mapStateToProps = (state) => ({
   pricesReducer: state.pricesReducer,
+  cartReducer: state.cartReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
@@ -74,11 +75,14 @@ class ProductVariants extends Component {
   };
 
   render() {
-    const { addProductToCart, page, qty, updateQty, cartSelectedAttributes, product } = this.props;
+    const { addProductToCart, page, qty, updateQty, cartSelectedAttributes, product, cartReducer, selectedId } =
+      this.props;
+    const { selectedAttrtibutes } = this.state;
     const { brand, name, attributes, description, gallery, id } = product;
-
+    // console.log(selectedId);
     return (
       <div className="pdp-variants">
+        {selectedId && <></>}
         <div className="pdp-variants-wrapper">
           <div className="pdp-variants-header">
             <h1 className="variants-brand">{brand}</h1>
@@ -92,7 +96,7 @@ class ProductVariants extends Component {
           <Attributes
             attributes={attributes}
             setAttributes={this.setAttributes}
-            selectedAttrtibutes={this.state.selectedAttrtibutes}
+            selectedAttrtibutes={selectedAttrtibutes}
             cartSelectedAttributes={cartSelectedAttributes}
             page={page}
           />
@@ -108,7 +112,9 @@ class ProductVariants extends Component {
               <button
                 type="button"
                 className="add-cart-btn"
-                onClick={() => addProductToCart({ selectedAttrtibutes: this.state.selectedAttrtibutes, id, qty: 1 })}
+                onClick={() =>
+                  addProductToCart({ selectedAttrtibutes, id, selectedId: id + cartReducer.totalQty, qty: 1 })
+                }
               >
                 ADD TO CART
               </button>
@@ -121,11 +127,11 @@ class ProductVariants extends Component {
         {page !== 'pdp' && (
           <div className="cart-slider">
             <div className="cart-buttons-wrapper">
-              <button type="button" onClick={() => updateQty(id, 'add')}>
+              <button type="button" onClick={() => updateQty(selectedId, 'add')}>
                 {plusSquare}
               </button>
               <span className="cart-item-qty">{qty}</span>
-              <button type="button" onClick={() => updateQty(id, 'substract')}>
+              <button type="button" onClick={() => updateQty(selectedId, 'substract')}>
                 {minusSquare}
               </button>
             </div>

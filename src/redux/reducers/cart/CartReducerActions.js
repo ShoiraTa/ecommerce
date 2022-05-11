@@ -57,9 +57,9 @@ export const addProductToCart = (product) => async (dispatch) => {
     .catch((error) => console.log(error));
 };
 
-export const updateQty = (id, action) => ({
+export const updateQty = (selectedId, action) => ({
   type: actionType.CART_UPDATE_PRODUCT_QTY,
-  payload: { action, id },
+  payload: { action, selectedId },
 });
 
 export const getTotal = (label) => ({

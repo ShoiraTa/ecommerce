@@ -51,6 +51,7 @@ class Cart extends Component {
               products.map((item) => {
                 const { product } = item;
                 const { selected } = item;
+                console.log(selected);
                 return (
                   <div key={product.id + selected.selectedAttrtibutes[0].selected} className="product-wrapper">
                     <ProductVariants
@@ -60,6 +61,7 @@ class Cart extends Component {
                       updateQty={updateQty}
                       qty={selected.qty}
                       cartSelectedAttributes={selected.selectedAttrtibutes}
+                      selectedId={selected.selectedId}
                       addProductToCart={addProductToCart}
                     />
                   </div>

@@ -10,8 +10,11 @@ const initState = {
 const cartReducer = (state = initState, action) => {
   switch (action.type) {
     case actionType.ADD_TO_CART:
-      const idx = state.products.findIndex((product) => product.selected.id === action.payload.selected.id);
+      const idx = state.products.findIndex(
+        (product) => product.selected.selectedId === action.payload.selected.selectedId
+      );
       const newArr = [...state.products];
+
       let dublicate = false;
       if (idx >= 0) {
         state.products[idx].selected.selectedAttrtibutes.forEach((attribute) => {
@@ -38,7 +41,12 @@ const cartReducer = (state = initState, action) => {
       };
 
     case actionType.CART_UPDATE_PRODUCT_QTY:
-      const index = state.products.findIndex((product) => product.selected.id === action.payload.id);
+      const index = state.products.findIndex((product) => {
+        console.log(product);
+        console.log(action.payload);
+        return product.selected.selectedId === action.payload.selectedId;
+      });
+
       let newProducts = [...state.products];
       if (action.payload.action === 'add') {
         newProducts[index].selected.qty += 1;
