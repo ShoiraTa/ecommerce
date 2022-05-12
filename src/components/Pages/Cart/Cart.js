@@ -69,28 +69,31 @@ class Cart extends Component {
           {page !== 'minicart' && (
             <div>
               {total.total ? (
-                <div className="cart-total">
-                  <h4>
-                    Tax {tax}%:&nbsp;
-                    <strong>
-                      {((total.total / (100 + tax)) * tax).toFixed(2)}
-                      {total.symbol}
-                    </strong>
-                  </h4>
-                  <h4>
-                    Quantity:&nbsp;<strong>{totalQty}</strong>
-                  </h4>
-                  <h4>
-                    Total:&nbsp;
-                    <strong className="cart-total-item">
-                      {total.symbol}&nbsp;
-                      {total.total.toFixed(2)}
-                    </strong>
-                  </h4>
+                <>
+                  <div className="cart-total">
+                    <div className="cart-total-item">
+                      <h4>Tax {tax}%:</h4>
+                      <strong>
+                        {((total.total / (100 + tax)) * tax).toFixed(2)}
+                        {total.symbol}
+                      </strong>
+                    </div>
+                    <div className="cart-total-item">
+                      <h4>Quantity:</h4>
+                      <strong>{totalQty}</strong>
+                    </div>
+                    <div className="cart-total-item">
+                      <h4>Total:</h4>
+                      <strong>
+                        {total.symbol}&nbsp;
+                        {total.total.toFixed(2)}
+                      </strong>
+                    </div>
+                  </div>
                   <button type="button" className="cart-order-btn">
                     ORDER
                   </button>
-                </div>
+                </>
               ) : (
                 <h3>Your cart is empty. Start adding products!</h3>
               )}

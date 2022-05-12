@@ -93,7 +93,9 @@ nav li a {
     padding: 0;
     position: relative;
 }
-
+.cart-total{
+  margin: 25px 0 10px;
+}
 .cart-total-icon{
   width: 20px;
   height: 20px;
@@ -105,8 +107,8 @@ nav li a {
   line-height: 16px;
   border-radius: 50%;
   text-align: center;
-  top: -16px;
-  right: -11px;
+  top: -12px;
+  right: -12px;
   z-index: -1;
 }
 
@@ -126,7 +128,7 @@ nav li a {
 
 .nav-middle-group {
   padding-top: 10px;
-  width: 55px;
+  width: 57px;
 }
 
 .nav-currency-wrapper{
@@ -383,7 +385,7 @@ text-align: start;
   color: #fff;
   background-color: var(--c-primary);
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 120%;
 }
 
@@ -432,8 +434,8 @@ text-align: start;
 }
 
 .cart-buttons-wrapper button {
-  padding-right: 0;
   display: flex;
+  padding-right: 0;
 }
 
 .cart-slider{
@@ -466,9 +468,24 @@ line-height: 160%;
   padding: 0;
 }
 
-.cart-total h4{
-  font-weight: 400;
+.cart-total-item{
+  display: grid;
+   grid-template-columns: 3fr 4fr;
+    width: 250px;
 }
+
+.cart-total h4, .cart-total strong{
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  margin: 5px 0;
+}
+
+.cart-total strong{
+  font-weight: 700;
+}
+
+
 
 .cart-order-btn{
   height: 43px;
@@ -515,6 +532,7 @@ width: 293px;
   border: none;
   padding: 0;
   margin-bottom: 40px;
+  min-height: 297px;
 }
 
 .minicart .cart-buttons-wrapper{
