@@ -48,9 +48,9 @@ class ProductListingPage extends Component {
     const { currentCategory } = headerReducer;
     const { currentCurrency } = pricesReducer;
     const { products } = pdpReducer;
-    console.log(this.props);
+    // console.log(this.props);
     return (
-      <section className="container-sm" style={{ position: showPopup ? 'fixed' : null }}>
+      <section className={showPopup ? 'container-sm pdp-minicart-open' : 'container-sm'}>
         <div className="products-listing-wrapper">
           <h1>{currentCategory}</h1>
           {showPopup && <Minicart show={this.state.showPopup} onClickOutside={() => this.toggleMinicart()} />}

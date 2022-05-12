@@ -76,7 +76,11 @@ class ProductListingCard extends Component {
                 {greenRound}{' '}
               </button>
             )}
-            <h3>{product.name}</h3>
+            <h3>
+              {product.brand}
+              &nbsp;
+              {product.name}
+            </h3>
             <h4>
               {price.symbol}
               &nbsp;

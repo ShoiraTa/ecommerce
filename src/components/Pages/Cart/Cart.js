@@ -40,20 +40,18 @@ class Cart extends Component {
         <div className="cart-wrapper">
           {page === 'minicart' ? (
             <h1>
-              My Bag, <span>{totalQty}items</span>
+              <strong>My Bag,</strong> <span>{totalQty}items</span>
             </h1>
           ) : (
-            <h1>Cart</h1>
+            <h1>CART</h1>
           )}
 
           <div className="cart-products-wrapper">
             {products &&
               products.map((item) => {
-                const { product } = item;
-                const { selected } = item;
-                console.log(selected);
+                const { product, selected } = item;
                 return (
-                  <div key={product.id + selected.selectedAttrtibutes[0].selected} className="product-wrapper">
+                  <div key={selected.selectedId} className="product-wrapper">
                     <ProductVariants
                       productId={product.id}
                       product={product}

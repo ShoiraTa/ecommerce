@@ -10,9 +10,7 @@ const initState = {
 const cartReducer = (state = initState, action) => {
   switch (action.type) {
     case actionType.ADD_TO_CART:
-      const idx = state.products.findIndex(
-        (product) => product.selected.selectedId === action.payload.selected.selectedId
-      );
+      const idx = state.products.findIndex((product) => product.selected.id === action.payload.selected.id);
       const newArr = [...state.products];
 
       let dublicate = false;
@@ -42,8 +40,6 @@ const cartReducer = (state = initState, action) => {
 
     case actionType.CART_UPDATE_PRODUCT_QTY:
       const index = state.products.findIndex((product) => {
-        console.log(product);
-        console.log(action.payload);
         return product.selected.selectedId === action.payload.selectedId;
       });
 
@@ -55,7 +51,7 @@ const cartReducer = (state = initState, action) => {
       }
 
       if (newProducts[index].selected.qty < 1) {
-        newProducts = newProducts.filter((product) => product.selected.id !== action.payload.id);
+        newProducts = newProducts.filter((product) => product.selected.selectedId !== action.payload.selectedId);
       }
 
       const totalItems = newProducts.reduce((t, item) => {

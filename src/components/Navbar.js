@@ -72,7 +72,7 @@ class Navbar extends Component {
             </li>
             <li className="nav-right-group">
               <ul className="relative">
-                <li className="d-flex align-items-center">
+                <li className="d-flex align-items-center nav-currency-wrapper">
                   <button type="button" onClick={this.toggleDropdown}>
                     <span type="button" className="currency">
                       {currentCurrency.symbol}
@@ -89,7 +89,7 @@ class Navbar extends Component {
                     />
                   )}
                 </li>
-                <li>
+                <li className="cart-svg-wrapper">
                   <Link to="/cart" className="cart-svg">
                     {cartReducer.totalQty ? <div className="cart-total-icon">{cartReducer.totalQty}</div> : null}
                     {cartSvg}

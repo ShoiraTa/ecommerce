@@ -88,7 +88,7 @@ class ProductVariants extends Component {
             <h1 className="variants-brand">{brand}</h1>
             <h3 className="variants-product-name">{name}</h3>
           </div>
-          {page === 'minicart' && (
+          {page !== 'pdp' && (
             <div className="variants-price">
               <div className="variants-priceBox">{this.setPrice()}</div>
             </div>
@@ -100,29 +100,29 @@ class ProductVariants extends Component {
             cartSelectedAttributes={cartSelectedAttributes}
             page={page}
           />
-          {page === 'cart' && (
-            <div className="variants-price">
-              <h3 className="variants-h5">PRICE</h3>
-              <div className="variants-priceBox">{this.setPrice()}</div>
-            </div>
-          )}
 
           {page === 'pdp' && (
-            <div className="variants-add-cart">
-              <button
-                type="button"
-                className="add-cart-btn"
-                onClick={() =>
-                  addProductToCart({ selectedAttrtibutes, id, selectedId: id + cartReducer.totalQty, qty: 1 })
-                }
-              >
-                ADD TO CART
-              </button>
-            </div>
+            <>
+              <div className="variants-price" style={{ marginTop: '40px' }}>
+                <h3 className="variants-h5">PRICE</h3>
+                <div className="variants-priceBox">{this.setPrice()}</div>
+              </div>
+              <div className="variants-add-cart">
+                <button
+                  type="button"
+                  className="add-cart-btn"
+                  onClick={() =>
+                    addProductToCart({ selectedAttrtibutes, id, selectedId: id + cartReducer.totalQty, qty: 1 })
+                  }
+                >
+                  ADD TO CART
+                </button>
+              </div>
+              <div className="variants-product-variants">
+                <p>{description && this.filterDescription(description)}</p>
+              </div>
+            </>
           )}
-          <div className="variants-product-variants">
-            <p>{description && this.filterDescription(description)}</p>
-          </div>
         </div>
         {page !== 'pdp' && (
           <div className="cart-slider">

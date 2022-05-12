@@ -61,7 +61,7 @@ button, a{
   font-size: 18px;
   line-height: 160%;
   color: var(--c-black);
-  padding-right: 5px;
+  padding-right: 10px;
 }
 
 
@@ -116,8 +116,21 @@ nav li a {
   font-weight: 600;
 }
 
+.nav-left-group li {
+  padding-bottom: 3px;
+}
+
+.nav-right-group li{
+  padding-top: 4px;
+}
+
 .nav-middle-group {
   padding-top: 10px;
+  width: 55px;
+}
+
+.nav-currency-wrapper{
+  width: 55px;
 }
 
 .nav-right-group{
@@ -125,10 +138,6 @@ nav li a {
   justify-content: end;
   display: flex;
   padding-top: 5px;
-}
-
-.nav-right-group ul{
-  width: 70px;
 }
 
 .dropdown{
@@ -174,14 +183,14 @@ text-align: start;
 .products-grid{
   margin: 103px 0 191px 0;
   display: grid;
-  gap: 103px 30px;
-  grid-template-columns: repeat(auto-fit, minmax(31%, 1fr))
+  gap: 100px 40px;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 386px))
 }
 
 
 
 .listing-card-wrapper{
-  height: 444px;
+  height: 430px;
   padding: 16px 0 0;
   display: flex;
   flex-direction: column;
@@ -212,14 +221,14 @@ text-align: start;
   align-items: start;
   flex-direction: column;
   height: 58px;
-  padding: 16px;
+  padding: 2px 20px;
   position: relative;
 }
 
 .listing-card-add-btn{
   position: absolute;
-  right: 31px;
-  bottom: 85px;
+  right: 20px;
+  bottom: 55px;
   background-color: transparent;
   z-index: 1;
 }
@@ -254,15 +263,25 @@ text-align: start;
 /* PDP */
 .pdp-wrapper{
   display: flex;
-  margin-top: 72px;
+  margin-top: 80px;
   height: 790px;
-  gap: 35px;
+  gap: 100px;
   overflow: hidden;
 }
+
+.pdp-wrapper .d-flex{
+  gap: 40px 
+}
+
+.pdp-wrapper .sizes-container{
+  gap: 13px;
+  margin: 8px 0 24px;
+}
+
 .variant-img-container{
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 40px;
   cursor: pointer;
 }
 
@@ -278,6 +297,10 @@ text-align: start;
   height: 511px;
 }
 
+.pdp-minicart-open{
+  position: fixed;
+  left: 7%;
+}
 
 
 /* pdp variants */
@@ -289,7 +312,7 @@ text-align: start;
   /* margin-left: 65px; */
 }
 
-.pdp-variants-header{
+.pdp-wrapper .pdp-variants-header{
   margin-bottom: 43px;
 }
 .variants-brand{
@@ -315,9 +338,10 @@ text-align: start;
 
 .sizes-container{
   display: flex;
-  gap: 13px;
-  margin: 8px 0 24px;
+  gap: 8px;
+  margin: 8px 0 17px;
 }
+
 
 .color-box{
   width: 32px;
@@ -337,7 +361,7 @@ text-align: start;
 
 .text-box {
   width: 63px;
-  height: 45px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -381,18 +405,23 @@ text-align: start;
 /* Cart */
 
 .cart-wrapper{
-  margin-top: 80px;
   padding: 80px 0 274px;
 }
 
 .cart-products-wrapper{
-  margin-top: 55px;
+  margin-top: 58px;
   border-bottom: 1px solid #E5E5E5;
 }
 
+.cart-products-wrapper  .variants-price{
+  margin-bottom: 8px;
+}
+
+
+
 .product-wrapper{
   border-top: 1px solid #E5E5E5;
-  padding: 24px 0;
+  padding: 24px 0 15px
 }
 
 .cart-buttons-wrapper{
@@ -400,6 +429,11 @@ text-align: start;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+}
+
+.cart-buttons-wrapper button {
+  padding-right: 0;
+  display: flex;
 }
 
 .cart-slider{
@@ -424,8 +458,12 @@ line-height: 160%;
 
 .slider-buttons-wrapper{
   position: absolute;
-  bottom: 16px;
-  right: 16px;
+  bottom: 12px;
+  right: 10px;
+}
+
+.slider-prev{
+  padding: 0;
 }
 
 .cart-total h4{
@@ -447,6 +485,8 @@ line-height: 160%;
   top: 80px;
   left: 0;
   bottom: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 .minicart{
   position: absolute;
@@ -460,7 +500,6 @@ line-height: 160%;
 }
 
 .minicart h1{
-  font-weight: 700;
   font-size: 16px;
   line-height: 160%;
 }
@@ -512,12 +551,14 @@ width: 293px;
 .minicart .sizes-container{
   gap: 8px;
   flex-wrap: wrap;
+  
 }
 
 .minicart .variants-priceBox{
   font-weight: 500;
 font-size: 16px;
 line-height: 160%;
+margin-top: 0;
 }
 
 .minicart .cart-item-qty{
