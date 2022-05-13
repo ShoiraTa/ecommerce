@@ -82,7 +82,6 @@ class ProductVariants extends Component {
     const { page, qty, updateQty, cartSelectedAttributes, product, cartReducer, selectedId } = this.props;
     const { selectedAttrtibutes } = this.state;
     const { brand, name, attributes, description, gallery, id } = product;
-    // console.log(selectedAttrtibutes.length, attributes.length);
     return (
       <div className="pdp-variants">
         <div className="pdp-variants-wrapper">

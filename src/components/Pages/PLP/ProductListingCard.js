@@ -34,11 +34,15 @@ class ProductListingCard extends Component {
     });
   };
 
-  setHoverAddBtn = (e) => {
+  addProduct = (e, product, id) => {
     e.preventDefault();
-    this.setState({
-      hoverCart: true,
+    const { addProductToCart } = this.props;
+    let selectedAttrtibutes = [];
+    product.attributes.forEach((attr) => {
+      selectedAttrtibutes = [...selectedAttrtibutes, { label: attr.id, selected: attr.items[0].value }];
     });
+
+    addProductToCart({ selectedAttrtibutes, id, selectedId: id + 0, qty: 1 });
     this.props.toggleMinicart();
   };
 
@@ -72,7 +76,11 @@ class ProductListingCard extends Component {
           </div>
           <div className="listing-card-desc">
             {hoverCart && product.inStock && (
-              <button className="listing-card-add-btn" type="button" onClick={(e) => this.setHoverAddBtn(e)}>
+              <button
+                className="listing-card-add-btn"
+                type="button"
+                onClick={(e) => this.addProduct(e, product, product.id)}
+              >
                 {greenRound}
               </button>
             )}

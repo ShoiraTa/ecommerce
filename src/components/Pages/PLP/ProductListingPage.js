@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCategoryProducts } from '../../../redux/reducers/pdp/pdpReducerActions';
 import ProductListingCard from './ProductListingCard';
+import { addProductToCart } from '../../../redux/reducers/cart/cartReducerActions';
+
 import Minicart from '../Cart/Minicart';
 
 const mapStateToProps = (state) => ({
@@ -9,10 +11,12 @@ const mapStateToProps = (state) => ({
   pricesReducer: state.pricesReducer,
   pdpReducer: state.pdpReducer,
   currentCategory: state.headerReducer.currentCategory,
+  cartReducer: state.cartReducer,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   getCategoryProducts: (category) => dispatch(getCategoryProducts(category)),
+  addProductToCart: (product) => dispatch(addProductToCart(product)),
 });
 
 class ProductListingPage extends Component {
@@ -43,7 +47,7 @@ class ProductListingPage extends Component {
   };
 
   render() {
-    const { headerReducer, pricesReducer, pdpReducer } = this.props;
+    const { headerReducer, pricesReducer, pdpReducer, addProductToCart, cartReducer } = this.props;
     const { showPopup } = this.state;
     const { currentCategory } = headerReducer;
     const { currentCurrency } = pricesReducer;
@@ -66,6 +70,9 @@ class ProductListingPage extends Component {
                     currentCategory={currentCategory}
                     currentCurrency={currentCurrency}
                     toggleMinicart={this.toggleMinicart}
+                    showPopup={showPopup}
+                    addProductToCart={addProductToCart}
+                    cartReducer={cartReducer}
                   />
                 );
               })}
