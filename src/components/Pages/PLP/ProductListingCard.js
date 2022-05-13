@@ -73,7 +73,7 @@ class ProductListingCard extends Component {
           <div className="listing-card-desc">
             {hoverCart && product.inStock && (
               <button className="listing-card-add-btn" type="button" onClick={(e) => this.setHoverAddBtn(e)}>
-                {greenRound}{' '}
+                {greenRound}
               </button>
             )}
             <h3>

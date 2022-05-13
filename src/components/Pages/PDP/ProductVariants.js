@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import ReactHtmlParser from 'react-html-parser';
 import { getProductPrice } from '../../../redux/reducers/global/pricesReducerActions';
 import Attributes from './Attributes';
 import { plusSquare, minusSquare } from '../../../assets/svgIcons';
@@ -23,8 +24,7 @@ class ProductVariants extends Component {
   }
 
   componentDidMount() {
-    const { productId } = this.props;
-    const { pricesReducer, getProductPrice } = this.props;
+    const { pricesReducer, getProductPrice, productId } = this.props;
     getProductPrice({ id: productId, currency: pricesReducer.currentCurrency.label });
   }
 
@@ -37,9 +37,10 @@ class ProductVariants extends Component {
   }
 
   setAttributes = (attr) => {
+    const { selectedAttrtibutes } = this.state;
     const existingProduct =
-      this.state.selectedAttrtibutes &&
-      this.state.selectedAttrtibutes.filter((selectedAttrtibutes) => selectedAttrtibutes.label === attr.label);
+      selectedAttrtibutes &&
+      selectedAttrtibutes.filter((selectedAttrtibutes) => selectedAttrtibutes.label === attr.label);
 
     if (existingProduct.length === 1) {
       this.setState((prevState) => ({
@@ -50,12 +51,15 @@ class ProductVariants extends Component {
         ),
       }));
     } else {
-      this.setState({ selectedAttrtibutes: [...this.state.selectedAttrtibutes, attr] });
+      this.setState({ selectedAttrtibutes: [...selectedAttrtibutes, attr] });
     }
   };
 
-  filterDescription = (desc) => {
-    return desc.replace(/<\/?p[^>]*>/g, '');
+  addProduct = ({ selectedAttrtibutes, id, selectedId }) => {
+    const { product, addProductToCart } = this.props;
+    if (selectedAttrtibutes.length === product.attributes.length) {
+      addProductToCart({ selectedAttrtibutes, id, selectedId, qty: 1 });
+    }
   };
 
   setPrice = () => {
@@ -75,14 +79,12 @@ class ProductVariants extends Component {
   };
 
   render() {
-    const { addProductToCart, page, qty, updateQty, cartSelectedAttributes, product, cartReducer, selectedId } =
-      this.props;
+    const { page, qty, updateQty, cartSelectedAttributes, product, cartReducer, selectedId } = this.props;
     const { selectedAttrtibutes } = this.state;
     const { brand, name, attributes, description, gallery, id } = product;
-    // console.log(selectedId);
+    // console.log(selectedAttrtibutes.length, attributes.length);
     return (
       <div className="pdp-variants">
-        {selectedId && <></>}
         <div className="pdp-variants-wrapper">
           <div className="pdp-variants-header">
             <h1 className="variants-brand">{brand}</h1>
@@ -100,7 +102,6 @@ class ProductVariants extends Component {
             cartSelectedAttributes={cartSelectedAttributes}
             page={page}
           />
-
           {page === 'pdp' && (
             <>
               <div className="variants-price" style={{ marginTop: '40px' }}>
@@ -111,15 +112,13 @@ class ProductVariants extends Component {
                 <button
                   type="button"
                   className="add-cart-btn"
-                  onClick={() =>
-                    addProductToCart({ selectedAttrtibutes, id, selectedId: id + cartReducer.totalQty, qty: 1 })
-                  }
+                  onClick={() => this.addProduct({ selectedAttrtibutes, id, selectedId: id + cartReducer.totalQty })}
                 >
                   ADD TO CART
                 </button>
               </div>
               <div className="variants-product-variants">
-                <p>{description && this.filterDescription(description)}</p>
+                <div>{ReactHtmlParser(description)} </div>
               </div>
             </>
           )}

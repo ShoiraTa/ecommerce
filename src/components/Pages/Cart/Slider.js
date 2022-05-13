@@ -7,8 +7,6 @@ class Slider extends Component {
     this.state = {
       slider: {
         imageIdx: 0,
-        prevActive: false,
-        nextActive: true,
       },
     };
   }
@@ -26,7 +24,9 @@ class Slider extends Component {
     } else if (action === 'prev') {
       this.setState({
         ...this.state,
-        slider: { imageIdx: slider.imageIdx && slider.imageIdx - 1 },
+        slider: {
+          imageIdx: slider.imageIdx && slider.imageIdx - 1,
+        },
       });
     }
   };
@@ -36,11 +36,12 @@ class Slider extends Component {
     const { slider } = this.state;
     return (
       <div className="cart-images-wrapper" style={{ backgroundImage: `url(${gallery[slider.imageIdx]})` }}>
-        {page === 'cart' && (
+        {page === 'cart' && gallery.length > 1 && (
           <div className="slider-buttons-wrapper">
             <button type="button" className="slider-prev" onClick={() => this.setSlider(gallery.length, 'prev')}>
               {sliderPrev}
             </button>
+
             <button type="button" className="slider-next" onClick={() => this.setSlider(gallery.length, 'next')}>
               {sliderNext}
             </button>
