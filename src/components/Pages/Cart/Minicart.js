@@ -24,11 +24,12 @@ class Minicart extends Component {
   }
 
   render() {
+    const { toggleMinicart } = this.props;
     if (!this.props.show) return null;
     return (
       <div aria-hidden="true" className="minicart-wrapper">
         <div className="minicart" ref={this.ref}>
-          <Cart page="minicart" />
+          <Cart page="minicart" toggleMinicart={toggleMinicart} />
         </div>
       </div>
     );

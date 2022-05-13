@@ -33,7 +33,7 @@ class Cart extends Component {
   }
 
   render() {
-    const { cartReducer, updateQty, addProductToCart, page } = this.props;
+    const { cartReducer, updateQty, addProductToCart, page, toggleMinicart } = this.props;
     const { total, products, totalQty, tax } = cartReducer;
     return (
       <div className="container">
@@ -111,14 +111,12 @@ class Cart extends Component {
               </div>
               <div className="minicart-btn">
                 <Link to="/cart">
-                  <button className="btn view-bag-btn" type="button">
-                    {' '}
+                  <button className="btn view-bag-btn" type="button" onClick={toggleMinicart}>
                     VIEW BAG
                   </button>
                 </Link>
                 <Link to="/cart">
                   <button className="btn checkout-btn" type="button">
-                    {' '}
                     CHECK OUT
                   </button>
                 </Link>
