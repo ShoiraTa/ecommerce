@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { getCategoryProducts } from '../../../redux/reducers/pdp/pdpReducerActions';
 import ProductListingCard from './ProductListingCard';
 import { addProductToCart } from '../../../redux/reducers/cart/cartReducerActions';
-
 import Minicart from '../Cart/Minicart';
+import './plp.css';
 
 const mapStateToProps = (state) => ({
   headerReducer: state.headerReducer,

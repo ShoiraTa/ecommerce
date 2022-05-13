@@ -1,0 +1,104 @@
+/* PLP */
+.products-listing-wrapper{
+  margin: 80px auto;
+}
+
+.products-listing-wrapper h1{
+  font-weight: 400;
+  font-size: 42px;
+  line-height: 160%;
+  text-transform: capitalize;
+  margin: 0;
+}
+
+.products-grid{
+  margin: 103px 0 191px 0;
+  display: grid;
+  gap: 100px 40px;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 386px))
+}
+
+.listing-card-wrapper{
+  height: 430px;
+  padding: 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  transition: 0.2s;
+  position: relative;
+}
+
+.listing-card-wrapper:hover{
+  box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+}
+
+.listing-card-img-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.listing-card-img{
+  float: left;
+  width: 354px;
+  height: 330px;
+}
+
+.listing-card-desc{
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+  height: 58px;
+  padding: 2px 20px;
+  position: relative;
+}
+
+.listing-card-add-btn{
+  position: absolute;
+  right: 20px;
+  bottom: 55px;
+  background-color: transparent;
+  z-index: 1;
+}
+
+.listing-card-desc h3, 
+.listing-card-desc h4{
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 160%;
+  color: var(--c-black);
+  margin: 0;
+}
+
+.listing-card-desc h4{
+  font-weight: 500;
+}
+
+.listing-card-out{
+  background-color: #fff;
+  opacity: 0.5;
+  cursor: none;
+}
+
+.listing-card-outofstock{
+  position: absolute;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 160%;
+  color: #8D8F9A;
+}
+
+.cursor-default{
+  cursor: default;
+}
+
+@media only screen and (max-width: 1023px) {
+  .products-grid{
+    margin: 30px auto 100px auto;
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(auto, 30%));
+    justify-content: center;
+  }
+}

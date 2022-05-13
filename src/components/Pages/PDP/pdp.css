@@ -1,0 +1,140 @@
+
+/* PDP */
+.pdp-wrapper{
+  display: flex;
+  margin-top: 80px;
+  height: 790px;
+  gap: 100px;
+  overflow: hidden;
+}
+
+.pdp-wrapper .d-flex{
+  gap: 40px 
+}
+
+.pdp-wrapper .sizes-container{
+  gap: 13px;
+  margin: 8px 0 24px;
+}
+
+.variant-img-container{
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  cursor: pointer;
+}
+
+.variant-img{
+  width: 79px;
+  height: 80px;
+}
+
+.variant-main-img{
+  width: 610px;
+  height: 511px;
+}
+
+.pdp-minicart-open{
+  position: fixed;
+  left: 7%;
+}
+
+
+/* pdp variants */
+.pdp-variants{
+  display: flex;
+  justify-content: space-between;
+}
+
+.pdp-wrapper .pdp-variants-header{
+  margin-bottom: 43px;
+}
+.variants-brand{
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 27px;
+  margin: 0 0 16px;
+}
+.variants-product-name{
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 27px;
+  margin: 0;
+}
+
+.variants-h5 {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.sizes-container{
+  display: flex;
+  gap: 8px;
+  margin: 8px 0 17px;
+}
+
+
+.color-box{
+  width: 32px;
+  height: 32px;
+  position: relative;
+}
+
+.selected-text-box {
+  position: relative;
+}
+
+.selected-text-box .selected-color-border{
+  height: 34px;
+    width: 34px;
+    top: -2px;
+  left: -2px;
+  border: 1px solid var(--c-primary);
+  position: absolute;
+}
+
+.text-box {
+  width: 63px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--c-text);
+}
+
+.selected-text-box > button {
+  background-color: #1D1F22;
+  color: #FFF;
+}
+
+.variants-add-cart{
+  margin: 20px 0 40px;
+}
+
+.add-cart-btn, .cart-order-btn{
+  width: 292px;
+  height: 52px;
+  color: #fff;
+  background-color: var(--c-primary);
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 120%;
+}
+
+.add-cart-btn:hover{
+  background-color: #5ece7cd6;
+}
+
+.variants-priceBox{
+  width: 86px;
+  height: 46px;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}

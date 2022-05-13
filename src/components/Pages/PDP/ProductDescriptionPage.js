@@ -5,6 +5,7 @@ import { getProduct } from '../../../redux/reducers/pdp/pdpReducerActions';
 import ProductVariants from './ProductVariants';
 import ProductDescriptionImages from './ProductDescriptionImages';
 import { addProductToCart } from '../../../redux/reducers/cart/cartReducerActions';
+import './pdp.css';
 
 function withParams(PureComponent) {
   return (props) => <PureComponent {...props} params={useParams()} />;

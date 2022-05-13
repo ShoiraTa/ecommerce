@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Cart from './Cart';
-import './minicart.css';
+import './cart.css';
 
 class Minicart extends Component {
   constructor(props) {

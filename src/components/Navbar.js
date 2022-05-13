@@ -6,6 +6,7 @@ import { getCategories, setCategory } from '../redux/reducers/header/headerReduc
 import { setCurrency, getCurrencies } from '../redux/reducers/global/pricesReducerActions';
 import NavbarDropdown from './NavbarDropdown';
 import Minicart from './Pages/Cart/Minicart';
+import './navbar.css';
 
 const mapStateToProps = (state) => ({
   headerReducer: state.headerReducer,

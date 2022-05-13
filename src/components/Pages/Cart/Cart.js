@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ProductVariants from '../PDP/ProductVariants';
 import { addProductToCart, updateQty, getTotal } from '../../../redux/reducers/cart/cartReducerActions';
+import './cart.css';
 
 const mapStateToProps = (state) => ({
   pdpReducer: state.pdpReducer,

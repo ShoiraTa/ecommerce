@@ -5,7 +5,6 @@ import ProductListingPage from './components/Pages/PLP/ProductListingPage';
 import Navbar from './components/Navbar';
 import Cart from './components/Pages/Cart/Cart';
 import './App.css';
-import './helpers.css';
 
 class App extends Component {
   render() {
