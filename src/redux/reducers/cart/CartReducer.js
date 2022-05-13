@@ -11,36 +11,32 @@ const cartReducer = (state = initState, action) => {
   switch (action.type) {
     case actionType.ADD_TO_CART:
       const productsArr = state.products.filter((product) => product.selected.id === action.payload.selected.id);
-
-      let idx = state.products.findIndex((product) => product.selected.id === action.payload.selected.id);
-      const newArr = [...state.products];
       let dublicate = false;
-      if (idx >= 0) {
-        productsArr.forEach((product, i) =>
+      let dub = {};
+
+      productsArr.forEach((product) => {
+        const index = state.products.findIndex((prod) => prod.selected.selectedId === product.selected.selectedId);
+        dub = { ...dub, [product.selected.selectedId]: [true, index] };
+        action.payload.selected.selectedAttrtibutes.forEach((selectedAttr) => {
           product.selected.selectedAttrtibutes.forEach((attribute) => {
-            action.payload.selected.selectedAttrtibutes.forEach((selectedAttr) => {
-              if (selectedAttr.label === attribute.label) {
-                if (selectedAttr.selected === attribute.selected) {
-                  dublicate = true;
-                  idx = i;
-                }
+            if (selectedAttr.label === attribute.label) {
+              if (selectedAttr.selected !== attribute.selected) {
+                dub = { ...dub, [product.selected.selectedId]: [false, index] };
               }
-            });
-          })
-        );
-        if (dublicate === true) {
-          newArr[idx].selected.qty += 1;
-          return {
-            ...state,
-            products: newArr,
-            totalQty: state.totalQty + 1,
-          };
+            }
+          });
+        });
+      });
+      Object.values(dub).forEach((val) => {
+        if (val[0] === true) {
+          state.products[val[1]].selected.qty += 1;
+          dublicate = true;
         }
-      }
+      });
 
       return {
         ...state,
-        products: [...state.products, action.payload],
+        products: dublicate ? [...state.products] : [...state.products, action.payload],
         totalQty: state.totalQty + 1,
       };
 

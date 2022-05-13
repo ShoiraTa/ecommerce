@@ -40,7 +40,7 @@ class Cart extends Component {
         <div className="cart-wrapper">
           {page === 'minicart' ? (
             <h1>
-              <strong>My Bag,</strong> <span>{totalQty}items</span>
+              <strong>My Bag,</strong> <span>{totalQty}&nbsp;items</span>
             </h1>
           ) : (
             <h1>CART</h1>

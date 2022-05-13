@@ -503,7 +503,7 @@ line-height: 160%;
   z-index: 1;
   background: rgba(0, 0, 0, 0.3);
   right: 0;
-  top: 80px;
+  top: 78px;
   left: 0;
   bottom: 0;
   overflow-y: scroll;
@@ -511,7 +511,7 @@ line-height: 160%;
 }
 .minicart{
   position: absolute;
-  right:  72px;
+  right:  88px;
   background: #fff;
   width: 325px;
 }
