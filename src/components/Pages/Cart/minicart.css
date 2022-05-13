@@ -1,0 +1,135 @@
+/* Minicart */
+
+.minicart-wrapper{
+  position: fixed;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.3);
+  right: 0;
+  top: 78px;
+  left: 0;
+  bottom: 0;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+.minicart{
+  position: absolute;
+  right:  42px;
+  background: #fff;
+  width: 325px;
+}
+
+.minicart .container {
+  width: calc(100% - 8%);
+}
+
+.minicart h1{
+  font-size: 16px!important;
+  line-height: 160%;
+}
+
+.minicart .cart-wrapper, .minicart .cart-products-wrapper{
+  padding: 0;
+  margin: 32px 0 41px;
+}
+.minicart .cart-products-wrapper{
+width: 293px;
+}
+.minicart .product-wrapper{
+  border: none;
+  padding: 0;
+  margin-bottom: 40px;
+}
+
+.minicart .cart-buttons-wrapper{
+  width: 24px;
+  margin-right: 8px;
+}
+
+.minicart .pdp-variants-header{
+  margin-bottom: 0;
+}
+
+.minicart .variants-brand, .minicart .variants-product-name{
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 160%;
+  margin-bottom: 0;
+}
+.minicart .variants-h5{
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 16px;
+  text-transform: capitalize;
+}
+
+.minicart .text-box, 
+.minicart .cart-buttons-wrapper button svg,
+.minicart .cart-buttons-wrapper button{
+  width: auto;
+  height: 24px;
+  width: auto;
+  min-width: 24px;
+  padding: 0;
+}
+
+.minicart .sizes-container{
+  gap: 8px;
+  flex-wrap: wrap;
+  
+}
+
+.minicart .color-box{
+  width: 16px;
+  height: 16px;
+}
+
+.minicart .selected-text-box .selected-color-border {
+  width: 18px;
+  height: 18px;
+  left: -2px;
+  bottom: -2px;
+}
+
+.minicart .variants-priceBox{
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 160%;
+  margin-top: 0;
+  height: auto;
+}
+
+.minicart .cart-item-qty{
+  font-weight: 500;
+font-size: 16px;
+line-height: 160%;
+}
+
+.minicart .cart-slider{
+  min-height: 190px;
+  margin-left: 20px
+}
+
+.minicart .cart-slider{
+  min-height: 190px;
+}
+
+.minicart .cart-images-wrapper{
+  width: 121px;
+  margin-left: 0;
+}
+
+.minicart .pdp-variants-wrapper{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+.minicart-total, .minicart-btn{
+  display: flex;
+    justify-content: space-between;
+}
+
+.minicart-total p{
+font-weight: 600;
+font-size: 16px;
+line-height: 18px;
+}

@@ -24,13 +24,13 @@ class Attributes extends Component {
     return (
       <div>
         {attributes &&
-          attributes.map((attribute) => {
+          attributes.map((attribute, i) => {
             return (
               <div key={attribute.id}>
                 <div>
                   <h5 className="variants-h5">{attribute.name}</h5>
                 </div>
-                <div className="sizes-container">
+                <div className={i + 1 === attributes.length ? 'sizes-container mb-0' : 'sizes-container'}>
                   {attribute.items.map((attr) => (
                     <div
                       key={attr.displayValue}

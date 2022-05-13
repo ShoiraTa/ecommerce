@@ -4,8 +4,8 @@ import ProductDescriptionPage from './components/Pages/PDP/ProductDescriptionPag
 import ProductListingPage from './components/Pages/PLP/ProductListingPage';
 import Navbar from './components/Navbar';
 import Cart from './components/Pages/Cart/Cart';
-import './helpers.css';
 import './App.css';
+import './helpers.css';
 
 class App extends Component {
   render() {

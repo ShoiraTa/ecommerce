@@ -89,18 +89,21 @@ class ProductVariants extends Component {
             <h1 className="variants-brand">{brand}</h1>
             <h3 className="variants-product-name">{name}</h3>
           </div>
-          {page !== 'pdp' && (
-            <div className="variants-price">
-              <div className="variants-priceBox">{this.setPrice()}</div>
-            </div>
-          )}
-          <Attributes
-            attributes={attributes}
-            setAttributes={this.setAttributes}
-            selectedAttrtibutes={selectedAttrtibutes}
-            cartSelectedAttributes={cartSelectedAttributes}
-            page={page}
-          />
+          <div>
+            {page !== 'pdp' && (
+              <div className="variants-price">
+                <div className="variants-priceBox">{this.setPrice()}</div>
+              </div>
+            )}
+            <Attributes
+              attributes={attributes}
+              setAttributes={this.setAttributes}
+              selectedAttrtibutes={selectedAttrtibutes}
+              cartSelectedAttributes={cartSelectedAttributes}
+              page={page}
+            />
+          </div>
+
           {page === 'pdp' && (
             <>
               <div className="variants-price" style={{ marginTop: '40px' }}>

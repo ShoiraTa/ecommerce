@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Cart from './Cart';
+import './minicart.css';
 
 class Minicart extends Component {
   constructor(props) {
