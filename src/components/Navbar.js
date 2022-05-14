@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { cartSvg, smallArrowDown, greenCartSvg, smallArrowUp } from '../assets/svgIcons';
 import { getCategories, setCategory } from '../redux/reducers/header/headerReducerActions';
 import { setCurrency, getCurrencies } from '../redux/reducers/global/pricesReducerActions';
+import { toggleMinicart } from '../redux/reducers/cart/cartReducerActions';
 import NavbarDropdown from './NavbarDropdown';
 import Minicart from './Pages/Cart/Minicart';
 import './navbar.css';
@@ -19,6 +20,7 @@ const mapDispatchToProps = (dispatch) => ({
   setCategory: (category) => dispatch(setCategory(category)),
   getCurrencies: () => dispatch(getCurrencies),
   getCategories: () => dispatch(getCategories),
+  toggleMinicart: () => dispatch(toggleMinicart()),
 });
 
 class Navbar extends Component {
@@ -26,7 +28,6 @@ class Navbar extends Component {
     super(props);
     this.state = {
       dropdownOpen: false,
-      showPopup: false,
     };
   }
 
@@ -41,16 +42,10 @@ class Navbar extends Component {
     this.setState({ dropdownOpen: !dropdownOpen });
   };
 
-  toggleMinicart = () => {
-    this.setState({
-      ...this.state,
-      showPopup: !this.state.showPopup,
-    });
-  };
-
   render() {
-    const { dropdownOpen, showPopup } = this.state;
-    const { setCategory, headerReducer, pricesReducer, setCurrency, cartReducer } = this.props;
+    const { dropdownOpen } = this.state;
+    const { setCategory, headerReducer, pricesReducer, setCurrency, cartReducer, toggleMinicart } = this.props;
+    const { minicartIsOpen } = cartReducer;
     const { categories, currentCategory } = headerReducer;
     const { currentCurrency, currencies } = pricesReducer;
     return (
@@ -100,7 +95,7 @@ class Navbar extends Component {
                   )}
                 </li>
                 <li className="cart-svg-wrapper">
-                  <button type="button" className="cart-svg" onClick={this.toggleMinicart}>
+                  <button type="button" className="cart-svg" onClick={toggleMinicart}>
                     {cartReducer.totalQty ? <div className="cart-total-icon">{cartReducer.totalQty}</div> : null}
                     {cartSvg}
                   </button>
@@ -109,12 +104,8 @@ class Navbar extends Component {
             </li>
           </ul>
         </nav>
-        {showPopup && (
-          <Minicart
-            show={this.state.showPopup}
-            onClickOutside={() => this.toggleMinicart()}
-            toggleMinicart={this.toggleMinicart}
-          />
+        {minicartIsOpen && (
+          <Minicart show={minicartIsOpen} onClickOutside={() => toggleMinicart()} toggleMinicart={toggleMinicart} />
         )}
       </header>
     );

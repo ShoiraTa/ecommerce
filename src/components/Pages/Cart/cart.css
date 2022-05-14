@@ -107,17 +107,26 @@
 
 /* Minicart */
 
-.minicart-wrapper{
-  position: fixed;
-  z-index: 1;
-  background: rgba(0, 0, 0, 0.3);
+.minicart-wrapper, .minicart-background{
   right: 0;
-  top: 78px;
   left: 0;
   bottom: 0;
+  position: fixed;
+}
+
+.minicart-wrapper{
+  z-index: 1;
+  padding-top: 78px;
+  top: 0;
+}
+
+.minicart-background{
   overflow-y: scroll;
   overflow-x: hidden;
+  top: 78px;
+  background: rgba(0, 0, 0, 0.3);
 }
+
 .minicart{
   position: absolute;
   right:  42px;

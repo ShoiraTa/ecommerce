@@ -44,16 +44,17 @@ class ProductDescriptionPage extends PureComponent {
   }
 
   render() {
-    const { pdpReducer, pricesReducer, addProductToCart, params } = this.props;
+    const { pdpReducer, pricesReducer, addProductToCart, params, cartReducer } = this.props;
     const { productImg } = this.state;
     const { productLoading, product } = pdpReducer;
+    const { minicartIsOpen } = cartReducer;
     const { gallery } = product;
     const { productId } = params;
 
     return !productLoading && pricesReducer.pricesLoading ? (
       <div className="text-center">Loading...</div>
     ) : (
-      <div className="container">
+      <section className={minicartIsOpen ? 'container pdp-minicart-open' : 'container'}>
         <div className="pdp-wrapper">
           <ProductDescriptionImages
             gallery={gallery}
@@ -62,7 +63,7 @@ class ProductDescriptionPage extends PureComponent {
           />
           <ProductVariants product={product} addProductToCart={addProductToCart} productId={productId} page="pdp" />
         </div>
-      </div>
+      </section>
     );
   }
 }

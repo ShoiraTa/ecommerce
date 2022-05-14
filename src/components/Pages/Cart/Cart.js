@@ -36,6 +36,7 @@ class Cart extends Component {
   render() {
     const { cartReducer, updateQty, addProductToCart, page, toggleMinicart } = this.props;
     const { total, products, totalQty, tax } = cartReducer;
+    console.log(cartReducer);
     return (
       <div className="container">
         <div className="cart-wrapper">

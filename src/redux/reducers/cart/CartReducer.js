@@ -5,6 +5,7 @@ const initState = {
   total: 0,
   totalQty: 0,
   tax: 21,
+  minicartIsOpen: false,
 };
 
 const cartReducer = (state = initState, action) => {
@@ -81,7 +82,11 @@ const cartReducer = (state = initState, action) => {
         ...state,
         total: { total, symbol: action.payload },
       };
-
+    case actionType.TOGGLE_MINICART:
+      return {
+        ...state,
+        minicartIsOpen: !state.minicartIsOpen,
+      };
     default:
       return state;
   }

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCategoryProducts } from '../../../redux/reducers/pdp/pdpReducerActions';
 import ProductListingCard from './ProductListingCard';
-import { addProductToCart } from '../../../redux/reducers/cart/cartReducerActions';
+import { addProductToCart, toggleMinicart } from '../../../redux/reducers/cart/cartReducerActions';
 import Minicart from '../Cart/Minicart';
 import './plp.css';
 
@@ -17,16 +17,10 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   getCategoryProducts: (category) => dispatch(getCategoryProducts(category)),
   addProductToCart: (product) => dispatch(addProductToCart(product)),
+  toggleMinicart: () => dispatch(toggleMinicart()),
 });
 
 class ProductListingPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showPopup: false,
-    };
-  }
-
   componentDidMount() {
     const { getCategoryProducts, currentCategory } = this.props;
     getCategoryProducts(currentCategory);
@@ -39,25 +33,17 @@ class ProductListingPage extends Component {
     }
   }
 
-  toggleMinicart = () => {
-    this.setState({
-      ...this.state,
-      showPopup: !this.state.showPopup,
-    });
-  };
-
   render() {
-    const { headerReducer, pricesReducer, pdpReducer, addProductToCart, cartReducer } = this.props;
-    const { showPopup } = this.state;
+    const { headerReducer, pricesReducer, pdpReducer, addProductToCart, cartReducer, toggleMinicart } = this.props;
+    const { minicartIsOpen } = cartReducer;
     const { currentCategory } = headerReducer;
     const { currentCurrency } = pricesReducer;
     const { products } = pdpReducer;
-    // console.log(this.props);
     return (
-      <section className={showPopup ? 'container-sm pdp-minicart-open' : 'container-sm'}>
+      <section className={minicartIsOpen ? 'container-sm pdp-minicart-open' : 'container-sm'}>
         <div className="products-listing-wrapper">
           <h1>{currentCategory}</h1>
-          {showPopup && <Minicart show={this.state.showPopup} onClickOutside={() => this.toggleMinicart()} />}
+          {minicartIsOpen && <Minicart show={minicartIsOpen} onClickOutside={() => toggleMinicart()} />}
 
           <div className="products-container">
             <div className="products-grid">
@@ -69,8 +55,8 @@ class ProductListingPage extends Component {
                     product={product}
                     currentCategory={currentCategory}
                     currentCurrency={currentCurrency}
-                    toggleMinicart={this.toggleMinicart}
-                    showPopup={showPopup}
+                    toggleMinicart={toggleMinicart}
+                    minicartIsOpen={minicartIsOpen}
                     addProductToCart={addProductToCart}
                     cartReducer={cartReducer}
                   />

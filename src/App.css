@@ -60,6 +60,7 @@ button, a{
   background-repeat: no-repeat;
 }
 
+
 /**********************
 ** Grid
 **********************/
@@ -85,6 +86,11 @@ button, a{
   .listing-card-desc{
     padding: 0;
   }
+  .container-sm {
+    width: calc(100% - 13%);
+    margin: auto;
+    padding-left: 1%;
+  }
 
 }
 
@@ -101,7 +107,7 @@ button, a{
     margin: auto;
     padding-left: 1%;
   }
-
+  
   .minicart .container{
     max-width: calc(100% - 7%);
   }

@@ -66,3 +66,7 @@ export const getTotal = (label) => ({
   type: actionType.GET_TOTAL,
   payload: label,
 });
+
+export const toggleMinicart = () => ({
+  type: actionType.TOGGLE_MINICART,
+});

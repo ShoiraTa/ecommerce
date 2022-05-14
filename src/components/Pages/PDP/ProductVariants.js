@@ -20,6 +20,7 @@ class ProductVariants extends Component {
     super(props);
     this.state = {
       selectedAttrtibutes: [],
+      allAttrSelected: true,
     };
   }
 
@@ -38,6 +39,7 @@ class ProductVariants extends Component {
 
   setAttributes = (attr) => {
     const { selectedAttrtibutes } = this.state;
+    this.setState({ ...this.state, allAttrSelected: true });
     const existingProduct =
       selectedAttrtibutes &&
       selectedAttrtibutes.filter((selectedAttrtibutes) => selectedAttrtibutes.label === attr.label);
@@ -59,7 +61,7 @@ class ProductVariants extends Component {
     const { product, addProductToCart } = this.props;
     if (selectedAttrtibutes.length === product.attributes.length) {
       addProductToCart({ selectedAttrtibutes, id, selectedId, qty: 1 });
-    }
+    } else this.setState({ ...this.state, allAttrSelected: false });
   };
 
   setPrice = () => {
@@ -80,7 +82,7 @@ class ProductVariants extends Component {
 
   render() {
     const { page, qty, updateQty, cartSelectedAttributes, product, cartReducer, selectedId } = this.props;
-    const { selectedAttrtibutes } = this.state;
+    const { selectedAttrtibutes, allAttrSelected } = this.state;
     const { brand, name, attributes, description, gallery, id } = product;
     return (
       <div className="pdp-variants">
@@ -118,6 +120,7 @@ class ProductVariants extends Component {
                 >
                   ADD TO CART
                 </button>
+                {!allAttrSelected && <p className="warning-text">Please select all attributes</p>}
               </div>
               <div className="variants-product-variants">
                 <div>{ReactHtmlParser(description)} </div>
