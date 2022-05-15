@@ -67,6 +67,7 @@
   font-size: 30px;
   line-height: 27px;
   margin: 0 0 16px;
+  color: var(--c-text);
 }
 
 .pdp-variants__name {
@@ -74,6 +75,7 @@
   font-size: 30px;
   line-height: 27px;
   margin: 0;
+  color: var(--c-text);
 }
 
 .pdp-variant__header {
@@ -246,6 +248,10 @@
 
   .pdp__images {
     gap: 0;
+  }
+
+  .pdp__variant-img-wrapper {
+    gap: 5px;
   }
 }
 

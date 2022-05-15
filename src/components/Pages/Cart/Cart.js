@@ -24,7 +24,6 @@ class Cart extends Component {
   render() {
     const { cartReducer, updateQty, addProductToCart, page, toggleMinicart } = this.props;
     const { total, products, totalQty, tax } = cartReducer;
-    // console.log(toggleMinicart);
     return (
       <div className="container">
         <div className="inner-container">
@@ -36,7 +35,6 @@ class Cart extends Component {
             ) : (
               <h1>CART</h1>
             )}
-
             <div className="cart__products">
               {products &&
                 products.map((item) => {

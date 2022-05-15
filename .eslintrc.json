@@ -37,7 +37,6 @@
     "no-confusing-arrow":"off",
     "comma-dangle" : "off",
     "no-param-reassign" :"off"
-
   },
   "ignorePatterns": [ 
     "dist/",

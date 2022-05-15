@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ReactHtmlParser from 'react-html-parser';
 import { getProductPrice } from '../../../redux/reducers/global/pricesReducerActions';
@@ -78,10 +79,10 @@ class ProductVariants extends Component {
     return (
       <div className="pdp-variants">
         <div className="pdp-variants__wrapper">
-          <div className="pdp-variants__header">
+          <Link className="pdp-variants__header" to="/">
             <h1 className="pdp-variants__brand">{brand}</h1>
             <h3 className="pdp-variants__name">{name}</h3>
-          </div>
+          </Link>
           <div>
             {page !== 'pdp' && (
               <div className="pdp-variants__price-wrapper">

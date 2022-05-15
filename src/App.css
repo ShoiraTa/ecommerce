@@ -106,16 +106,3 @@ a {
     margin: auto;
   }
 }
-
-@media only screen and (max-width: 767px) {
-  .container {
-    width: calc(100% - 7%);
-    margin: auto;
-  }
-
-  .container-sm {
-    width: calc(100% - 4%);
-    margin: auto;
-    padding-left: 1%;
-  }
-}

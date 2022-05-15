@@ -20,7 +20,6 @@ class Attributes extends Component {
 
   render() {
     const { attributes, selectedAttrtibutes, cartSelectedAttributes } = this.props;
-    // console.log(attributes, selectedAttrtibutes);
     return (
       <div>
         {attributes &&

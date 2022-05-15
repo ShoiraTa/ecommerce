@@ -58,9 +58,9 @@ class Navbar extends Component {
                 </ul>
               </li>
               <li className="nav-middle">
-                <button type="button">
+                <Link type="button" to="/">
                   <i>{greenCartSvg}</i>
-                </button>
+                </Link>
               </li>
               <li className="nav-right">
                 <ul className="relative">
