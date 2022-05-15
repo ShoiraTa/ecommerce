@@ -27,7 +27,7 @@ In this project, I build a minimalistic e-commerce web page.
 
 | PLP                                                                                                                                                                   | PDP                                                                                                                                                                   |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <img width="759" alt="Screenshot 2022-05-15 at 22 43 43" src="https://user-images.githubusercontent.com/77038610/168488860-cad9e538-91f3-4e72-8e4a-f83701daf3ad.png"> | <img width="758" alt="Screenshot 2022-05-15 at 22 41 49" src="https://user-images.githubusercontent.com/77038610/168488793-60219ba8-b5e7-42a9-be58-02b881b9e61b.png"> |
+| <img width="759" alt="Screenshot 2022-05-15 at 22 43 43" src="https://user-images.githubusercontent.com/77038610/168488860-cad9e538-91f3-4e72-8e4a-f83701daf3ad.png"> |<img width="939" alt="Screenshot 2022-05-15 at 23 27 28" src="https://user-images.githubusercontent.com/77038610/168490478-29bd0dde-7998-4582-a6a1-28ca0b6debcc.png">|
 
 ## Getting Started
 
