@@ -21,14 +21,12 @@ nav li a {
   text-transform: uppercase;
 }
 
-.cart-svg{
+.nav-right__cart-svg{
     padding: 0;
     position: relative;
 }
-.cart-total{
-  margin: 25px 0 10px;
-}
-.cart-total-icon{
+
+.nav-right__total{
   display: flex;
     justify-content: center;
     align-items: center;
@@ -46,7 +44,7 @@ nav li a {
   z-index: -1;
 }
 
-.nav-link-active{
+.nav-left__link-active{
   color: var(--c-primary);
   border-bottom: 2px solid var(--c-primary);
   font-weight: 600;
@@ -65,10 +63,6 @@ nav li a {
   width: 57px;
 }
 
-.nav-currency-wrapper{
-  width: 55px;
-}
-
 .nav-right{
   width: 228px;
   justify-content: end;
@@ -76,7 +70,29 @@ nav li a {
   padding-top: 5px;
 }
 
+.nav-right__currency-wrapper{
+  display: flex;
+  align-items: center;
+  width: 55px;
+}
+.nav-right__currency{
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 160%;
+  color: var(--c-black);
+  padding-right: 10px;
+}
+
+
 .dropdown{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.dropdown__menu{
   position: absolute;
   top: 35px;
   display: flex;
@@ -88,17 +104,11 @@ nav li a {
   left: -20px;
   width: 114px!important;
   justify-content: space-evenly;
+  padding-top: 20px;
 }
 
-.currency{
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 160%;
-  color: var(--c-black);
-  padding-right: 10px;
-}
 
-.dropdown button {
+.dropdown__menu button {
   height: 47px;
   width: 114px;
   font-weight: 500;
@@ -108,7 +118,7 @@ nav li a {
 text-align: start;
 }
 
-.dropdown button:hover{
+.dropdown__menu button:hover{
   color: #4e515b;
 }
 
@@ -131,15 +141,15 @@ text-align: start;
 }
 
 @media only screen and (max-device-width: 767px) {
-  .dropdown button, .dropdown {
+  .dropdown__menu button, .dropdown__menu {
     width: 80px!important;
   }
 
-  .dropdown{
+  .dropdown__menu{
   height: calc(27px * 5);
 }
 
-  .dropdown button{
+  .dropdown__menu button{
     padding: 0;
     display: flex;
     align-items: center;
@@ -148,22 +158,22 @@ text-align: start;
     height: 20px;
   }
 
-  .cart-svg-wrapper button {
+  .nav-right__cart-svg {
     width: 15px;
   }
 
-  .cart-total-icon{
+  .nav-right__total-icon{
   right: -8px;
     height: 15px;
     width: 15px;
     top: -8px;
     font-size: 10px;
 }
-.currency {
+.nav-right__currency {
   font-size: 15px;
   padding-right: 5px;
 }
-.nav-currency-wrapper{
+.nav-right__currency-wrapper{
   width: 40px;
 }
 

@@ -42,7 +42,7 @@ class ProductListingPage extends Component {
     return (
       <section className={minicartIsOpen ? 'container-sm pdp-minicart-open' : 'container'}>
         <div className="inner-container">
-          <div className="products-listing-wrapper">
+          <div className="products">
             <h1>{currentCategory}</h1>
             {minicartIsOpen && <Minicart show={minicartIsOpen} onClickOutside={() => toggleMinicart()} />}
 

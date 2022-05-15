@@ -9,20 +9,6 @@ import NavbarDropdown from './NavbarDropdown';
 import Minicart from './Pages/Cart/Minicart';
 import './navbar.css';
 
-const mapStateToProps = (state) => ({
-  headerReducer: state.headerReducer,
-  pricesReducer: state.pricesReducer,
-  cartReducer: state.cartReducer,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  setCurrency: (currency, symbol) => dispatch(setCurrency(currency, symbol)),
-  setCategory: (category) => dispatch(setCategory(category)),
-  getCurrencies: () => dispatch(getCurrencies),
-  getCategories: () => dispatch(getCategories),
-  toggleMinicart: () => dispatch(toggleMinicart()),
-});
-
 class Navbar extends Component {
   constructor(props) {
     super(props);
@@ -41,12 +27,15 @@ class Navbar extends Component {
   toggleDropdown = () => {
     const { dropdownOpen } = this.state;
     this.setState({ dropdownOpen: !dropdownOpen });
+
+    console.log('dropdownOpen', dropdownOpen);
   };
 
   toggleMinicart = () => {
+    const { showPopup } = this.state;
     this.setState({
       ...this.state,
-      showPopup: !this.state.showPopup,
+      showPopup: !showPopup,
     });
     this.props.toggleMinicart();
   };
@@ -56,7 +45,6 @@ class Navbar extends Component {
     const { setCategory, headerReducer, pricesReducer, setCurrency, cartReducer } = this.props;
     const { categories, currentCategory } = headerReducer;
     const { currentCurrency, currencies } = pricesReducer;
-    console.log(cartReducer);
     return (
       <header className="container">
         <div className="inner-container">
@@ -70,7 +58,7 @@ class Navbar extends Component {
                       <li key={name}>
                         <Link
                           to={name}
-                          className={currentCategory === name ? 'nav-link-active' : 'c-text'}
+                          className={currentCategory === name ? 'nav-left__link-active' : 'c-text'}
                           onClick={() => setCategory(name)}
                         >
                           {name}
@@ -82,14 +70,14 @@ class Navbar extends Component {
               </li>
               <li className="nav-middle">
                 <button type="button">
-                  <i className="cart-icon">{greenCartSvg}</i>
+                  <i>{greenCartSvg}</i>
                 </button>
               </li>
               <li className="nav-right">
                 <ul className="relative">
-                  <li className="d-flex align-items-center nav-currency-wrapper">
+                  <li className="nav-right__currency-wrapper">
                     <button type="button" onClick={this.toggleDropdown}>
-                      <span type="button" className="currency">
+                      <span type="button" className="nav-right__currency">
                         {currentCurrency.symbol}
                       </span>
                       {dropdownOpen ? smallArrowUp : smallArrowDown}
@@ -99,14 +87,14 @@ class Navbar extends Component {
                         setCurrency={setCurrency}
                         currencies={currencies}
                         toggleDropdown={this.toggleDropdown}
-                        show={this.state.dropdownOpen}
+                        show={dropdownOpen}
                         onClickOutside={() => this.toggleDropdown()}
                       />
                     )}
                   </li>
-                  <li className="cart-svg-wrapper">
-                    <button type="button" className="cart-svg" onClick={this.toggleMinicart}>
-                      {cartReducer.totalQty ? <div className="cart-total-icon">{cartReducer.totalQty}</div> : null}
+                  <li>
+                    <button type="button" className="nav-right__cart-svg" onClick={this.toggleMinicart}>
+                      {cartReducer.totalQty ? <div className="nav-right__total">{cartReducer.totalQty}</div> : null}
                       {cartSvg}
                     </button>
                   </li>
@@ -122,5 +110,19 @@ class Navbar extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  headerReducer: state.headerReducer,
+  pricesReducer: state.pricesReducer,
+  cartReducer: state.cartReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  setCurrency: (currency, symbol) => dispatch(setCurrency(currency, symbol)),
+  setCategory: (category) => dispatch(setCategory(category)),
+  getCurrencies: () => dispatch(getCurrencies),
+  getCategories: () => dispatch(getCategories),
+  toggleMinicart: () => dispatch(toggleMinicart()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

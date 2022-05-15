@@ -1,9 +1,9 @@
 /* PLP */
-.products-listing-wrapper{
+.products{
   margin: 80px auto;
 }
 
-.products-listing-wrapper h1{
+.products h1{
   font-weight: 400;
   font-size: 42px;
   line-height: 160%;
@@ -129,7 +129,7 @@
     font-size: 15px;
   }
 
-  .products-listing-wrapper h1{
+  .products h1{
     font-size: 32px;
   }
 }
