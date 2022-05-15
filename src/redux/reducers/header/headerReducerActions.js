@@ -1,7 +1,7 @@
 import axios from 'axios';
 import actionType from '../actionTypes';
 
-const endpoint = 'http://localhost:4000';
+const endpoint = 'https://e-commerce-endpoints1.herokuapp.com/';
 const headers = {
   'content-type': 'application/json',
 };
