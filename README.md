@@ -60,4 +60,4 @@ This project is [MIT](MIT.md) licensed.
 
 ## Show your support
 
-Give a ⭐️ if you like this project!
+Don't forget to give a ⭐️ if you like this project!
