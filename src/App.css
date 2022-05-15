@@ -62,44 +62,20 @@ button, a{
 
 
 /**********************
-** Grid
+** container
 **********************/
 
-/* 768px == 48em */
-@media only screen and (max-width: 768px) {
-  .container {
-    width: calc(100% - 13%);
-    margin: auto;
-    padding-left: 1%;
-  }
+/* Desktop lg*/
 
-}
-
-/* 768px == 48em */
-@media only screen and (max-width: 1023px) {
-  .container {
-    width: calc(100% - 7%);
-    margin: auto;
-    padding-left: 1%;
-  }
-
-  .listing-card-desc{
-    padding: 0;
-  }
-  .container-sm {
-    width: calc(100% - 13%);
-    margin: auto;
-    padding-left: 1%;
-  }
-
-}
-
-/* 1024px == 64em */
-@media only screen and (min-width: 1024px) {
   .container {
     max-width: calc(100% - 13%);
     margin: auto;
     padding-left: 1%;
+  }
+  
+  .inner-container{
+    max-width: 1440px;
+    margin: auto;
   }
 
   .container-sm {
@@ -110,5 +86,35 @@ button, a{
   
   .minicart .container{
     max-width: calc(100% - 7%);
+  }
+
+
+/*  desktop sm */
+@media only screen and (min-width: 768px)and (max-device-width: 1425px) {
+  .container {
+    width: calc(100% - 7%);
+    margin: auto;
+  }
+
+  .listing-card-desc{
+    padding: 0;
+  }
+
+  .container-sm {
+    width: calc(100% - 5%);
+    margin: auto;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .container {
+    width: calc(100% - 7%);
+    margin: auto;
+  }
+
+  .container-sm{
+    width: calc(100% - 4%);
+    margin: auto;
+    padding-left: 1%;
   }
 }

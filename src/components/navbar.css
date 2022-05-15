@@ -52,15 +52,15 @@ nav li a {
   font-weight: 600;
 }
 
-.nav-left-group li {
+.nav-left li {
   padding-bottom: 3px;
 }
 
-.nav-right-group li{
+.nav-right li{
   padding-top: 4px;
 }
 
-.nav-middle-group {
+.nav-middle {
   padding-top: 10px;
   width: 57px;
 }
@@ -69,7 +69,7 @@ nav li a {
   width: 55px;
 }
 
-.nav-right-group{
+.nav-right{
   width: 228px;
   justify-content: end;
   display: flex;
@@ -81,6 +81,7 @@ nav li a {
   top: 35px;
   display: flex;
   flex-direction: column;
+  background-color: #fff;
   align-items: start;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   height: calc(47px * 5);
@@ -121,4 +122,52 @@ text-align: start;
 
 .align-items-center{
   align-items: center;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1023px) {
+  nav li a{
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-device-width: 767px) {
+  .dropdown button, .dropdown {
+    width: 80px!important;
+  }
+
+  .dropdown{
+  height: calc(27px * 5);
+}
+
+  .dropdown button{
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    height: 20px;
+  }
+
+  .cart-svg-wrapper button {
+    width: 15px;
+  }
+
+  .cart-total-icon{
+  right: -8px;
+    height: 15px;
+    width: 15px;
+    top: -8px;
+    font-size: 10px;
+}
+.currency {
+  font-size: 15px;
+  padding-right: 5px;
+}
+.nav-currency-wrapper{
+  width: 40px;
+}
+
+.nav-right{
+padding-top: 0;
+}
 }

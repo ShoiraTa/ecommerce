@@ -40,28 +40,30 @@ class ProductListingPage extends Component {
     const { currentCurrency } = pricesReducer;
     const { products } = pdpReducer;
     return (
-      <section className={minicartIsOpen ? 'container-sm pdp-minicart-open' : 'container-sm'}>
-        <div className="products-listing-wrapper">
-          <h1>{currentCategory}</h1>
-          {minicartIsOpen && <Minicart show={minicartIsOpen} onClickOutside={() => toggleMinicart()} />}
+      <section className={minicartIsOpen ? 'container-sm pdp-minicart-open' : 'container'}>
+        <div className="inner-container">
+          <div className="products-listing-wrapper">
+            <h1>{currentCategory}</h1>
+            {minicartIsOpen && <Minicart show={minicartIsOpen} onClickOutside={() => toggleMinicart()} />}
 
-          <div className="products-container">
-            <div className="products-grid">
-              {products?.map((product) => {
-                return (
-                  <ProductListingCard
-                    key={product.id}
-                    prices={product.prices}
-                    product={product}
-                    currentCategory={currentCategory}
-                    currentCurrency={currentCurrency}
-                    toggleMinicart={toggleMinicart}
-                    minicartIsOpen={minicartIsOpen}
-                    addProductToCart={addProductToCart}
-                    cartReducer={cartReducer}
-                  />
-                );
-              })}
+            <div className="products-container">
+              <div className="products-grid">
+                {products?.map((product) => {
+                  return (
+                    <ProductListingCard
+                      key={product.id}
+                      prices={product.prices}
+                      product={product}
+                      currentCategory={currentCategory}
+                      currentCurrency={currentCurrency}
+                      toggleMinicart={toggleMinicart}
+                      minicartIsOpen={minicartIsOpen}
+                      addProductToCart={addProductToCart}
+                      cartReducer={cartReducer}
+                    />
+                  );
+                })}
+              </div>
             </div>
           </div>
         </div>

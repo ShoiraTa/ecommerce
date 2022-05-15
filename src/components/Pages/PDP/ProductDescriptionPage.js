@@ -55,13 +55,15 @@ class ProductDescriptionPage extends PureComponent {
       <div className="text-center">Loading...</div>
     ) : (
       <section className={minicartIsOpen ? 'container pdp-minicart-open' : 'container'}>
-        <div className="pdp-wrapper">
-          <ProductDescriptionImages
-            gallery={gallery}
-            productImg={productImg}
-            setImage={(image) => this.setState({ productImg: image })}
-          />
-          <ProductVariants product={product} addProductToCart={addProductToCart} productId={productId} page="pdp" />
+        <div className="inner-container">
+          <div className="pdp-wrapper">
+            <ProductDescriptionImages
+              gallery={gallery}
+              productImg={productImg}
+              setImage={(image) => this.setState({ productImg: image })}
+            />
+            <ProductVariants product={product} addProductToCart={addProductToCart} productId={productId} page="pdp" />
+          </div>
         </div>
       </section>
     );

@@ -28,6 +28,7 @@ class Navbar extends Component {
     super(props);
     this.state = {
       dropdownOpen: false,
+      showPopup: false,
     };
   }
 
@@ -42,71 +43,81 @@ class Navbar extends Component {
     this.setState({ dropdownOpen: !dropdownOpen });
   };
 
+  toggleMinicart = () => {
+    this.setState({
+      ...this.state,
+      showPopup: !this.state.showPopup,
+    });
+    this.props.toggleMinicart();
+  };
+
   render() {
-    const { dropdownOpen } = this.state;
-    const { setCategory, headerReducer, pricesReducer, setCurrency, cartReducer, toggleMinicart } = this.props;
-    const { minicartIsOpen } = cartReducer;
+    const { dropdownOpen, showPopup } = this.state;
+    const { setCategory, headerReducer, pricesReducer, setCurrency, cartReducer } = this.props;
     const { categories, currentCategory } = headerReducer;
     const { currentCurrency, currencies } = pricesReducer;
+    console.log(cartReducer);
     return (
       <header className="container">
-        <nav>
-          <ul>
-            <li className="nav-left-group">
-              <ul>
-                {categories?.map((category) => {
-                  const { name } = category;
-                  return (
-                    <li key={name}>
-                      <Link
-                        to={name}
-                        className={currentCategory === name ? 'nav-link-active' : 'c-text'}
-                        onClick={() => setCategory(name)}
-                      >
-                        {name}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
-            </li>
-            <li className="nav-middle-group">
-              <button type="button">
-                <i className="cart-icon">{greenCartSvg}</i>
-              </button>
-            </li>
-            <li className="nav-right-group">
-              <ul className="relative">
-                <li className="d-flex align-items-center nav-currency-wrapper">
-                  <button type="button" onClick={this.toggleDropdown}>
-                    <span type="button" className="currency">
-                      {currentCurrency.symbol}
-                    </span>
-                    {dropdownOpen ? smallArrowUp : smallArrowDown}
-                  </button>
-                  {dropdownOpen && (
-                    <NavbarDropdown
-                      setCurrency={setCurrency}
-                      currencies={currencies}
-                      toggleDropdown={this.toggleDropdown}
-                      show={this.state.dropdownOpen}
-                      onClickOutside={() => this.toggleDropdown()}
-                    />
-                  )}
-                </li>
-                <li className="cart-svg-wrapper">
-                  <button type="button" className="cart-svg" onClick={toggleMinicart}>
-                    {cartReducer.totalQty ? <div className="cart-total-icon">{cartReducer.totalQty}</div> : null}
-                    {cartSvg}
-                  </button>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-        {minicartIsOpen && (
-          <Minicart show={minicartIsOpen} onClickOutside={() => toggleMinicart()} toggleMinicart={toggleMinicart} />
-        )}
+        <div className="inner-container">
+          <nav>
+            <ul>
+              <li className="nav-left">
+                <ul>
+                  {categories?.map((category) => {
+                    const { name } = category;
+                    return (
+                      <li key={name}>
+                        <Link
+                          to={name}
+                          className={currentCategory === name ? 'nav-link-active' : 'c-text'}
+                          onClick={() => setCategory(name)}
+                        >
+                          {name}
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </li>
+              <li className="nav-middle">
+                <button type="button">
+                  <i className="cart-icon">{greenCartSvg}</i>
+                </button>
+              </li>
+              <li className="nav-right">
+                <ul className="relative">
+                  <li className="d-flex align-items-center nav-currency-wrapper">
+                    <button type="button" onClick={this.toggleDropdown}>
+                      <span type="button" className="currency">
+                        {currentCurrency.symbol}
+                      </span>
+                      {dropdownOpen ? smallArrowUp : smallArrowDown}
+                    </button>
+                    {dropdownOpen && (
+                      <NavbarDropdown
+                        setCurrency={setCurrency}
+                        currencies={currencies}
+                        toggleDropdown={this.toggleDropdown}
+                        show={this.state.dropdownOpen}
+                        onClickOutside={() => this.toggleDropdown()}
+                      />
+                    )}
+                  </li>
+                  <li className="cart-svg-wrapper">
+                    <button type="button" className="cart-svg" onClick={this.toggleMinicart}>
+                      {cartReducer.totalQty ? <div className="cart-total-icon">{cartReducer.totalQty}</div> : null}
+                      {cartSvg}
+                    </button>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </nav>
+          {showPopup && (
+            <Minicart show={showPopup} onClickOutside={this.toggleMinicart} toggleMinicart={this.toggleMinicart} />
+          )}
+        </div>
       </header>
     );
   }

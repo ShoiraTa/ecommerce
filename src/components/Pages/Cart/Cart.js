@@ -39,92 +39,94 @@ class Cart extends Component {
     console.log(cartReducer);
     return (
       <div className="container">
-        <div className="cart-wrapper">
-          {page === 'minicart' ? (
-            <h1>
-              <strong>My Bag,</strong> <span>{totalQty}&nbsp;items</span>
-            </h1>
-          ) : (
-            <h1>CART</h1>
-          )}
+        <div className="inner-container">
+          <div className="cart-wrapper">
+            {page === 'minicart' ? (
+              <h1>
+                <strong>My Bag,</strong> <span>{totalQty}&nbsp;items</span>
+              </h1>
+            ) : (
+              <h1>CART</h1>
+            )}
 
-          <div className="cart-products-wrapper">
-            {products &&
-              products.map((item) => {
-                const { product, selected } = item;
-                return (
-                  <div key={selected.selectedId} className="product-wrapper">
-                    <ProductVariants
-                      productId={product.id}
-                      product={product}
-                      page={page === 'minicart' ? 'minicart' : 'cart'}
-                      updateQty={updateQty}
-                      qty={selected.qty}
-                      cartSelectedAttributes={selected.selectedAttrtibutes}
-                      selectedId={selected.selectedId}
-                      addProductToCart={addProductToCart}
-                    />
-                  </div>
-                );
-              })}
+            <div className="cart-products-wrapper">
+              {products &&
+                products.map((item) => {
+                  const { product, selected } = item;
+                  return (
+                    <div key={selected.selectedId} className="product-wrapper">
+                      <ProductVariants
+                        productId={product.id}
+                        product={product}
+                        page={page === 'minicart' ? 'minicart' : 'cart'}
+                        updateQty={updateQty}
+                        qty={selected.qty}
+                        cartSelectedAttributes={selected.selectedAttrtibutes}
+                        selectedId={selected.selectedId}
+                        addProductToCart={addProductToCart}
+                      />
+                    </div>
+                  );
+                })}
+            </div>
+            {page !== 'minicart' && (
+              <div>
+                {total.total ? (
+                  <>
+                    <div className="cart-total">
+                      <div className="cart-total-item">
+                        <h4>Tax {tax}%:</h4>
+                        <strong>
+                          {((total.total / (100 + tax)) * tax).toFixed(2)}
+                          {total.symbol}
+                        </strong>
+                      </div>
+                      <div className="cart-total-item">
+                        <h4>Quantity:</h4>
+                        <strong>{totalQty}</strong>
+                      </div>
+                      <div className="cart-total-item">
+                        <h4>Total:</h4>
+                        <strong>
+                          {total.symbol}&nbsp;
+                          {total.total.toFixed(2)}
+                        </strong>
+                      </div>
+                    </div>
+                    <button type="button" className="cart-order-btn">
+                      ORDER
+                    </button>
+                  </>
+                ) : (
+                  <h3>Your cart is empty. Start adding products!</h3>
+                )}
+              </div>
+            )}
+
+            {page === 'minicart' && (
+              <div className="minicart-footer">
+                <div className="minicart-total">
+                  <p>Total</p>
+                  <p>
+                    {total.symbol && total.symbol}&nbsp;
+                    {total.total && total.total.toFixed(2)}
+                  </p>
+                </div>
+                <div className="minicart-btn">
+                  <Link to="/cart">
+                    <button className="btn view-bag-btn" type="button" onClick={toggleMinicart}>
+                      VIEW BAG
+                    </button>
+                  </Link>
+                  <Link to="/cart">
+                    <button className="btn checkout-btn" type="button">
+                      CHECK OUT
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
-          {page !== 'minicart' && (
-            <div>
-              {total.total ? (
-                <>
-                  <div className="cart-total">
-                    <div className="cart-total-item">
-                      <h4>Tax {tax}%:</h4>
-                      <strong>
-                        {((total.total / (100 + tax)) * tax).toFixed(2)}
-                        {total.symbol}
-                      </strong>
-                    </div>
-                    <div className="cart-total-item">
-                      <h4>Quantity:</h4>
-                      <strong>{totalQty}</strong>
-                    </div>
-                    <div className="cart-total-item">
-                      <h4>Total:</h4>
-                      <strong>
-                        {total.symbol}&nbsp;
-                        {total.total.toFixed(2)}
-                      </strong>
-                    </div>
-                  </div>
-                  <button type="button" className="cart-order-btn">
-                    ORDER
-                  </button>
-                </>
-              ) : (
-                <h3>Your cart is empty. Start adding products!</h3>
-              )}
-            </div>
-          )}
-
-          {page === 'minicart' && (
-            <div className="minicart-footer">
-              <div className="minicart-total">
-                <p>Total</p>
-                <p>
-                  {total.symbol && total.symbol}&nbsp;
-                  {total.total && total.total.toFixed(2)}
-                </p>
-              </div>
-              <div className="minicart-btn">
-                <Link to="/cart">
-                  <button className="btn view-bag-btn" type="button" onClick={toggleMinicart}>
-                    VIEW BAG
-                  </button>
-                </Link>
-                <Link to="/cart">
-                  <button className="btn checkout-btn" type="button">
-                    CHECK OUT
-                  </button>
-                </Link>
-              </div>
-            </div>
-          )}
         </div>
       </div>
     );
