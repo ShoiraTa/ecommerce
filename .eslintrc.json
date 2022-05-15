@@ -1,0 +1,45 @@
+{
+  "env": {
+    "browser": true,
+    "es6": true,
+    "jest": true
+  },
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "extends": ["airbnb", "plugin:react/recommended"],
+  "plugins": ["react"],
+  "rules": {
+    "react/jsx-filename-extension": ["warn", { "extensions": [".js", ".jsx"] }],
+    "react/react-in-jsx-scope": "off",
+    "import/no-unresolved": "off",
+    "no-shadow": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "react/prefer-stateless-function":"off",
+    "react/prop-types": "off",
+    "react/destructuring-assignment":"off",
+    "arrow-body-style":"off",
+    "react/no-access-state-in-setstate":"off",
+    "object-curly-newline":"off",
+    "max-len": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/display-name": "off",
+    "operator-linebreak": "off",
+    "no-case-declarations": "off",
+    "react/jsx-curly-newline": "off",
+    "implicit-arrow-linebreak": "off",
+    "function-paren-newline": "off", 
+    "no-confusing-arrow":"off",
+    "comma-dangle" : "off",
+    "no-param-reassign" :"off"
+  },
+  "ignorePatterns": [ 
+    "dist/",
+    "build/"
+  ]
+}
