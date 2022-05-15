@@ -11,17 +11,6 @@ function withParams(PureComponent) {
   return (props) => <PureComponent {...props} params={useParams()} />;
 }
 
-const mapStateToProps = (state) => ({
-  pdpReducer: state.pdpReducer,
-  pricesReducer: state.pricesReducer,
-  cartReducer: state.cartReducer,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getProduct: (id) => dispatch(getProduct(id)),
-  addProductToCart: (product) => dispatch(addProductToCart(product)),
-});
-
 class ProductDescriptionPage extends PureComponent {
   constructor(props) {
     super(props);
@@ -31,8 +20,8 @@ class ProductDescriptionPage extends PureComponent {
   }
 
   componentDidMount() {
-    const { productId } = this.props.params;
-    const { getProduct } = this.props;
+    const { getProduct, params } = this.props;
+    const { productId } = params;
     getProduct(productId);
   }
 
@@ -54,9 +43,9 @@ class ProductDescriptionPage extends PureComponent {
     return !productLoading && pricesReducer.pricesLoading ? (
       <div className="text-center">Loading...</div>
     ) : (
-      <section className={minicartIsOpen ? 'container pdp-minicart-open' : 'container'}>
+      <section className={minicartIsOpen ? 'container minicart-open' : 'container'}>
         <div className="inner-container">
-          <div className="pdp-wrapper">
+          <div className="pdp__wrapper">
             <ProductDescriptionImages
               gallery={gallery}
               productImg={productImg}
@@ -69,5 +58,16 @@ class ProductDescriptionPage extends PureComponent {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  pdpReducer: state.pdpReducer,
+  pricesReducer: state.pricesReducer,
+  cartReducer: state.cartReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getProduct: (id) => dispatch(getProduct(id)),
+  addProductToCart: (product) => dispatch(addProductToCart(product)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(withParams(ProductDescriptionPage));

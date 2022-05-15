@@ -6,15 +6,6 @@ import Attributes from './Attributes';
 import { plusSquare, minusSquare } from '../../../assets/svgIcons';
 import Slider from '../Cart/Slider';
 
-const mapStateToProps = (state) => ({
-  pricesReducer: state.pricesReducer,
-  cartReducer: state.cartReducer,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getProductPrice: (id) => dispatch(getProductPrice(id)),
-});
-
 class ProductVariants extends Component {
   constructor(props) {
     super(props);
@@ -86,15 +77,15 @@ class ProductVariants extends Component {
     const { brand, name, attributes, description, gallery, id } = product;
     return (
       <div className="pdp-variants">
-        <div className="pdp-variants-wrapper">
-          <div className="pdp-variants-header">
-            <h1 className="variants-brand">{brand}</h1>
-            <h3 className="variants-product-name">{name}</h3>
+        <div>
+          <div className="pdp-variants__header">
+            <h1 className="pdp-variants__brand">{brand}</h1>
+            <h3 className="pdp-variants__name">{name}</h3>
           </div>
           <div>
             {page !== 'pdp' && (
-              <div className="variants-price">
-                <div className="variants-priceBox">{this.setPrice()}</div>
+              <div className="pdp-variants__price-wrapper">
+                <div className="pdp-variants__price">{this.setPrice()}</div>
               </div>
             )}
             <Attributes
@@ -108,21 +99,21 @@ class ProductVariants extends Component {
 
           {page === 'pdp' && (
             <>
-              <div className="variants-price" style={{ marginTop: '40px' }}>
-                <h3 className="variants-h5">PRICE</h3>
-                <div className="variants-priceBox">{this.setPrice()}</div>
+              <div className="pdp-variants__price-wrapper" style={{ marginTop: '40px' }}>
+                <h3 className="pdp-variant__header">PRICE</h3>
+                <div className="pdp-variants__price">{this.setPrice()}</div>
               </div>
-              <div className="variants-add-cart">
+              <div className="pdp-variants__add">
                 <button
                   type="button"
-                  className="add-cart-btn"
+                  className="pdp-variants__add-btn"
                   onClick={() => this.addProduct({ selectedAttrtibutes, id, selectedId: id + cartReducer.totalQty })}
                 >
                   ADD TO CART
                 </button>
                 {!allAttrSelected && <p className="warning-text">Please select all attributes</p>}
               </div>
-              <div className="variants-product-variants">
+              <div className="pdp-variants__product-description">
                 <div>{ReactHtmlParser(description)} </div>
               </div>
             </>
@@ -130,11 +121,11 @@ class ProductVariants extends Component {
         </div>
         {page !== 'pdp' && (
           <div className="cart-slider">
-            <div className="cart-buttons-wrapper">
+            <div className="cart-slider__buttons">
               <button type="button" onClick={() => updateQty(selectedId, 'add')}>
                 {plusSquare}
               </button>
-              <span className="cart-item-qty">{qty}</span>
+              <span className="cart-slider__item-qty">{qty}</span>
               <button type="button" onClick={() => updateQty(selectedId, 'substract')}>
                 {minusSquare}
               </button>
@@ -146,5 +137,14 @@ class ProductVariants extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  pricesReducer: state.pricesReducer,
+  cartReducer: state.cartReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getProductPrice: (id) => dispatch(getProductPrice(id)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductVariants);

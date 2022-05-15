@@ -6,20 +6,6 @@ import { addProductToCart, toggleMinicart } from '../../../redux/reducers/cart/c
 import Minicart from '../Cart/Minicart';
 import './plp.css';
 
-const mapStateToProps = (state) => ({
-  headerReducer: state.headerReducer,
-  pricesReducer: state.pricesReducer,
-  pdpReducer: state.pdpReducer,
-  currentCategory: state.headerReducer.currentCategory,
-  cartReducer: state.cartReducer,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getCategoryProducts: (category) => dispatch(getCategoryProducts(category)),
-  addProductToCart: (product) => dispatch(addProductToCart(product)),
-  toggleMinicart: () => dispatch(toggleMinicart()),
-});
-
 class ProductListingPage extends Component {
   componentDidMount() {
     const { getCategoryProducts, currentCategory } = this.props;
@@ -40,14 +26,13 @@ class ProductListingPage extends Component {
     const { currentCurrency } = pricesReducer;
     const { products } = pdpReducer;
     return (
-      <section className={minicartIsOpen ? 'container-sm pdp-minicart-open' : 'container'}>
+      <section className={minicartIsOpen ? 'container-sm minicart-open' : 'container'}>
         <div className="inner-container">
           <div className="products">
             <h1>{currentCategory}</h1>
             {minicartIsOpen && <Minicart show={minicartIsOpen} onClickOutside={() => toggleMinicart()} />}
-
-            <div className="products-container">
-              <div className="products-grid">
+            <div>
+              <div className="products__grid">
                 {products?.map((product) => {
                   return (
                     <ProductListingCard
@@ -71,5 +56,19 @@ class ProductListingPage extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => ({
+  headerReducer: state.headerReducer,
+  pricesReducer: state.pricesReducer,
+  pdpReducer: state.pdpReducer,
+  currentCategory: state.headerReducer.currentCategory,
+  cartReducer: state.cartReducer,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  getCategoryProducts: (category) => dispatch(getCategoryProducts(category)),
+  addProductToCart: (product) => dispatch(addProductToCart(product)),
+  toggleMinicart: () => dispatch(toggleMinicart()),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductListingPage);

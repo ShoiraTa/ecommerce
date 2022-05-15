@@ -50,11 +50,7 @@ button, a{
   border: none;
 }
 
-.d-flex {
-  display: flex
-}
-
-.variant-img, .listing-card-img,.variant-main-img, .variant-img{
+.pdp__variant-img, .plp-card__img,.pdp__main-img{
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -96,7 +92,7 @@ button, a{
     margin: auto;
   }
 
-  .listing-card-desc{
+  .plp-card__desc{
     padding: 0;
   }
 

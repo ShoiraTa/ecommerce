@@ -28,8 +28,8 @@ class Minicart extends Component {
     const { toggleMinicart } = this.props;
     if (!this.props.show) return null;
     return (
-      <div aria-hidden="true" className="minicart-wrapper">
-        <div className="minicart-background">
+      <div aria-hidden="true" className="minicart__wrapper">
+        <div className="minicart__background">
           <div className="minicart" ref={this.ref}>
             <Cart page="minicart" toggleMinicart={toggleMinicart} />
           </div>

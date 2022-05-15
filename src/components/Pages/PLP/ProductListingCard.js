@@ -59,25 +59,25 @@ class ProductListingCard extends Component {
     const { product, currentCategory } = this.props;
     const { hoverCart, hoverAddBtn, price } = this.state;
     return (
-      <div className={`listing-card-wrapper ${!product.inStock ? 'listing-card-out' : ''}`}>
+      <div className={`plp-card__wrapper ${!product.inStock ? 'plp-card__out' : ''}`}>
         <Link
           to={!product.inStock || hoverAddBtn === true ? '#' : `/${currentCategory}/${product.id}`}
           className={product.inStock ? '' : 'cursor-default'}
           onMouseEnter={() => this.setHoverCart()}
           onMouseLeave={() => this.setHoverCart()}
         >
-          <div className="listing-card-img-container">
-            <div className="listing-card-img" style={{ backgroundImage: `url(${product.gallery[0]})` }} />
+          <div className="plp-card__img-container">
+            <div className="plp-card__img" style={{ backgroundImage: `url(${product.gallery[0]})` }} />
             {!product.inStock && (
-              <div className="listing-card-outofstock">
+              <div className="plp-card__outofstock">
                 <p>OUT OF STOCK</p>
               </div>
             )}
           </div>
-          <div className="listing-card-desc">
+          <div className="plp-card__desc">
             {hoverCart && product.inStock && (
               <button
-                className="listing-card-add-btn"
+                className="plp-card__add-btn"
                 type="button"
                 onClick={(e) => this.addProduct(e, product, product.id)}
               >

@@ -122,18 +122,6 @@ text-align: start;
   color: #4e515b;
 }
 
-.relative{
-  position: relative;
-}
-
-.d-flex {
-  display: flex
-}
-
-.align-items-center{
-  align-items: center;
-}
-
 @media only screen and (min-device-width: 768px) and (max-device-width: 1023px) {
   nav li a{
     font-size: 15px;

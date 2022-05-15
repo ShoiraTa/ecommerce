@@ -5,18 +5,6 @@ import ProductVariants from '../PDP/ProductVariants';
 import { addProductToCart, updateQty, getTotal } from '../../../redux/reducers/cart/cartReducerActions';
 import './cart.css';
 
-const mapStateToProps = (state) => ({
-  pdpReducer: state.pdpReducer,
-  pricesReducer: state.pricesReducer,
-  cartReducer: state.cartReducer,
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  addProductToCart: (product) => dispatch(addProductToCart(product)),
-  updateQty: (id, action) => dispatch(updateQty(id, action)),
-  getTotal: (label) => dispatch(getTotal(label)),
-});
-
 class Cart extends Component {
   componentDidMount() {
     const { pricesReducer, getTotal } = this.props;
@@ -104,22 +92,22 @@ class Cart extends Component {
             )}
 
             {page === 'minicart' && (
-              <div className="minicart-footer">
-                <div className="minicart-total">
+              <div>
+                <div className="minicart__total">
                   <p>Total</p>
                   <p>
                     {total.symbol && total.symbol}&nbsp;
                     {total.total && total.total.toFixed(2)}
                   </p>
                 </div>
-                <div className="minicart-btn">
+                <div className="minicart__btn">
                   <Link to="/cart">
-                    <button className="btn view-bag-btn" type="button" onClick={toggleMinicart}>
+                    <button className="btn mincart__view-btn" type="button" onClick={toggleMinicart}>
                       VIEW BAG
                     </button>
                   </Link>
                   <Link to="/cart">
-                    <button className="btn checkout-btn" type="button">
+                    <button className="btn minicart__checkout-btn" type="button">
                       CHECK OUT
                     </button>
                   </Link>
@@ -132,5 +120,15 @@ class Cart extends Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  pdpReducer: state.pdpReducer,
+  pricesReducer: state.pricesReducer,
+  cartReducer: state.cartReducer,
+});
 
+const mapDispatchToProps = (dispatch) => ({
+  addProductToCart: (product) => dispatch(addProductToCart(product)),
+  updateQty: (id, action) => dispatch(updateQty(id, action)),
+  getTotal: (label) => dispatch(getTotal(label)),
+});
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);
