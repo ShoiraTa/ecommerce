@@ -106,7 +106,7 @@
 }
 
 .pdp__attr-box {
-  width: 63px;
+  min-width: 63px;
   height: 44px;
   display: flex;
   align-items: center;
@@ -167,7 +167,7 @@
   }
 
   .pdp__attr-box {
-    width: 43px;
+    min-width: 43px;
     height: 34px;
   }
 
@@ -217,7 +217,7 @@
   }
 
   .pdp__attr-box {
-    width: 25px;
+    min-width: 25px;
     height: 25px;
   }
 
@@ -264,6 +264,11 @@
   .cart__order-btn,
   nav li a {
     font-size: 10px;
+  }
+
+  .pdp-variants__add-btn{
+    height: 25px;
+    width: 100%;
   }
 
   .pdp-variants__brand,

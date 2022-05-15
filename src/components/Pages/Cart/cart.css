@@ -275,9 +275,16 @@
 @media only screen and (max-device-width: 425px) {
   .minicart {
     right: 0;
-    bottom: 0;
     top: 0;
     width: 100%;
+  }
+
+  .minicart__btn a{
+    width: 45%;
+  }
+
+  .minicart__btn a .btn{
+    width: 100%
   }
 
   .cart__images-wrapper {

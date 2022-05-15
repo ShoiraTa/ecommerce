@@ -101,7 +101,6 @@
     grid-template-columns: repeat(auto-fit, minmax(auto, 30%));
     margin: 50px 0;
     gap: 50px 30px;
-    justify-content: center;
   }
 }
 
