@@ -25,12 +25,13 @@ class ProductListingPage extends Component {
     const { currentCategory } = headerReducer;
     const { currentCurrency } = pricesReducer;
     const { products } = pdpReducer;
+    console.log(minicartIsOpen);
     return (
       <section className={minicartIsOpen ? 'container-sm minicart-open' : 'container'}>
         <div className="inner-container">
           <div className="products">
             <h1>{currentCategory}</h1>
-            {minicartIsOpen && <Minicart show={minicartIsOpen} onClickOutside={() => toggleMinicart()} />}
+            {minicartIsOpen && <Minicart show={minicartIsOpen} toggleMinicart={toggleMinicart} />}
             <div>
               <div className="products__grid">
                 {products?.map((product) => {

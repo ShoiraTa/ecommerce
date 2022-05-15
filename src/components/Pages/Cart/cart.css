@@ -1,20 +1,20 @@
 
 /* Cart */
 
-.cart-wrapper{
+.cart{
   padding: 80px 0 274px;
 }
 
-.cart-products-wrapper{
+.cart__products{
   margin-top: 58px;
   border-bottom: 1px solid #E5E5E5;
 }
 
-.cart-products-wrapper  .variants-price{
+.cart__products  .pdp-variants__price{
   margin-bottom: 8px;
 }
 
-.product-wrapper{
+.cart__product{
   border-top: 1px solid #E5E5E5;
   padding: 20px 0
 }
@@ -35,8 +35,25 @@
   display: flex;
   min-height: 288px;
 }
+.cart-slider__item-qty{
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 160%;
+}
 
-.cart-images-wrapper{
+.cart-slider__next{
+  position: absolute;
+  bottom: 12px;
+  right: 10px;
+}
+
+.cart-slider__prev{
+  position: absolute;
+  bottom: 12px;
+  right: 50px;
+}
+
+.cart__images-wrapper{
   margin-left: 24px;
   width: 200px;
   position: relative;
@@ -45,42 +62,24 @@
   background-repeat: no-repeat;
 }
 
-.cart-slider__item-qty{
-  font-weight: 500;
-  font-size: 24px;
-  line-height: 160%;
-}
-
-.slider-next{
-  position: absolute;
-  bottom: 12px;
-  right: 10px;
-}
-
-.slider-prev{
-  position: absolute;
-  bottom: 12px;
-  right: 50px;
-}
-
-.cart-total-item{
+.cart__total-item{
   display: grid;
    grid-template-columns: 3fr 4fr;
     width: 250px;
 }
 
-.cart-total h4, .cart-total strong{
+.cart__total h4, .cart__total strong{
   font-weight: 400;
   font-size: 24px;
   line-height: 28px;
   margin: 5px 0;
 }
 
-.cart-total strong{
+.cart__total strong{
   font-weight: 700;
 }
 
-.cart-order-btn{
+.cart__order-btn{
   height: 43px;
   width: 279px;
 }
@@ -97,7 +96,6 @@
 }
 
 /* Minicart */
-
 
 
 .minicart{
@@ -136,14 +134,14 @@
   line-height: 160%;
 }
 
-.minicart .cart-wrapper, .minicart .cart-products-wrapper{
+.minicart .cart, .minicart .cart__products{
   padding: 0;
   margin: 32px 0 41px;
 }
-.minicart .cart-products-wrapper{
+.minicart .cart__products{
 width: 293px;
 }
-.minicart .product-wrapper{
+.minicart .cart__product{
   border: none;
   padding: 0;
   margin-bottom: 40px;
@@ -188,7 +186,7 @@ width: 293px;
   
 }
 
-.minicart .color-box{
+.minicart .pdp__color-box{
   width: 16px;
   height: 16px;
 }
@@ -223,7 +221,7 @@ line-height: 160%;
   min-height: 190px;
 }
 
-.minicart .cart-images-wrapper{
+.minicart .cart__images-wrapper{
   width: 121px;
   margin-left: 0;
 }
@@ -239,7 +237,7 @@ font-size: 16px;
 line-height: 18px;
 }
 
-.minicart .cart-products-wrapper{
+.minicart .cart__products{
   border: none;
 }
 

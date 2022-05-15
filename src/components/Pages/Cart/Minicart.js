@@ -19,14 +19,15 @@ class Minicart extends Component {
 
   handleClickOutside(event) {
     if (this.ref.current && !this.ref.current.contains(event.target)) {
-      return this.props.onClickOutside && this.props.onClickOutside();
+      return this.props.toggleMinicart && this.props.toggleMinicart();
     }
     return null;
   }
 
   render() {
-    const { toggleMinicart } = this.props;
-    if (!this.props.show) return null;
+    const { show, toggleMinicart } = this.props;
+    console.log(this.props);
+    if (!show) return null;
     return (
       <div aria-hidden="true" className="minicart__wrapper">
         <div className="minicart__background">

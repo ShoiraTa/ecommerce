@@ -24,11 +24,11 @@ class Cart extends Component {
   render() {
     const { cartReducer, updateQty, addProductToCart, page, toggleMinicart } = this.props;
     const { total, products, totalQty, tax } = cartReducer;
-    console.log(cartReducer);
+    // console.log(cartReducer);
     return (
       <div className="container">
         <div className="inner-container">
-          <div className="cart-wrapper">
+          <div className="cart">
             {page === 'minicart' ? (
               <h1>
                 <strong>My Bag,</strong> <span>{totalQty}&nbsp;items</span>
@@ -37,12 +37,12 @@ class Cart extends Component {
               <h1>CART</h1>
             )}
 
-            <div className="cart-products-wrapper">
+            <div className="cart__products">
               {products &&
                 products.map((item) => {
                   const { product, selected } = item;
                   return (
-                    <div key={selected.selectedId} className="product-wrapper">
+                    <div key={selected.selectedId} className="cart__product">
                       <ProductVariants
                         productId={product.id}
                         product={product}
@@ -61,19 +61,19 @@ class Cart extends Component {
               <div>
                 {total.total ? (
                   <>
-                    <div className="cart-total">
-                      <div className="cart-total-item">
+                    <div className="cart__total">
+                      <div className="cart__total-item">
                         <h4>Tax {tax}%:</h4>
                         <strong>
                           {((total.total / (100 + tax)) * tax).toFixed(2)}
                           {total.symbol}
                         </strong>
                       </div>
-                      <div className="cart-total-item">
+                      <div className="cart__total-item">
                         <h4>Quantity:</h4>
                         <strong>{totalQty}</strong>
                       </div>
-                      <div className="cart-total-item">
+                      <div className="cart__total-item">
                         <h4>Total:</h4>
                         <strong>
                           {total.symbol}&nbsp;
@@ -81,7 +81,7 @@ class Cart extends Component {
                         </strong>
                       </div>
                     </div>
-                    <button type="button" className="cart-order-btn">
+                    <button type="button" className="cart__order-btn">
                       ORDER
                     </button>
                   </>

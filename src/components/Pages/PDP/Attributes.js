@@ -39,7 +39,7 @@ class Attributes extends Component {
                       <button
                         onClick={() => this.props.setAttributes({ label: attribute.name, selected: attr.value })}
                         type="button"
-                        className={attribute.name === 'Color' ? 'color-box' : 'pdp__attr-box'}
+                        className={attribute.name === 'Color' ? 'pdp__color-box' : 'pdp__attr-box'}
                         style={{
                           backgroundColor: attribute.name === 'Color' ? `${attr.value}` : '',
                           border: attr.id === 'White' ? '1px solid #1D1F22' : null,

@@ -35,14 +35,14 @@ class Slider extends Component {
     const { gallery, page } = this.props;
     const { slider } = this.state;
     return (
-      <div className="cart-images-wrapper" style={{ backgroundImage: `url(${gallery[slider.imageIdx]})` }}>
+      <div className="cart__images-wrapper" style={{ backgroundImage: `url(${gallery[slider.imageIdx]})` }}>
         {page === 'cart' && gallery.length > 1 && (
-          <div className="slider-buttons-wrapper">
-            <button type="button" className="slider-prev" onClick={() => this.setSlider(gallery.length, 'prev')}>
+          <div>
+            <button type="button" className="cart-slider__prev" onClick={() => this.setSlider(gallery.length, 'prev')}>
               {sliderPrev}
             </button>
 
-            <button type="button" className="slider-next" onClick={() => this.setSlider(gallery.length, 'next')}>
+            <button type="button" className="cart-slider__next" onClick={() => this.setSlider(gallery.length, 'next')}>
               {sliderNext}
             </button>
           </div>

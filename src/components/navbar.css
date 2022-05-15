@@ -10,6 +10,7 @@ nav ul{
   align-items: center;
   margin: 0;
   padding: 0;
+  position: relative;
 }
 
 nav li a {
@@ -105,6 +106,7 @@ nav li a {
   width: 114px!important;
   justify-content: space-evenly;
   padding-top: 20px;
+  z-index: 1;
 }
 
 

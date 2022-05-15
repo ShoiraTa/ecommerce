@@ -37,7 +37,6 @@ class Navbar extends Component {
       ...this.state,
       showPopup: !showPopup,
     });
-    this.props.toggleMinicart();
   };
 
   render() {
@@ -102,9 +101,7 @@ class Navbar extends Component {
               </li>
             </ul>
           </nav>
-          {showPopup && (
-            <Minicart show={showPopup} onClickOutside={this.toggleMinicart} toggleMinicart={this.toggleMinicart} />
-          )}
+          {showPopup && <Minicart show={showPopup} toggleMinicart={this.toggleMinicart} />}
         </div>
       </header>
     );
