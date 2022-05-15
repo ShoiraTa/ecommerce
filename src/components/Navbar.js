@@ -33,7 +33,6 @@ class Navbar extends Component {
     const { setCategory, headerReducer, pricesReducer, setCurrency, cartReducer, toggleMinicart } = this.props;
     const { categories, currentCategory } = headerReducer;
     const { currentCurrency, currencies } = pricesReducer;
-    // console.log(minicartIsOpen);
     return (
       <header className="container">
         <div className="inner-container">

@@ -16,7 +16,7 @@
   display: grid;
   gap: 100px 40px;
   justify-content: start;
-  grid-template-columns: repeat(auto-fit, minmax(auto, 386px));
+  grid-template-columns: repeat(auto-fit, minmax(auto, 31%));
 }
 
 .plp-card__wrapper {
