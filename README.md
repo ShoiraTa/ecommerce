@@ -21,7 +21,13 @@ In this project, I build a minimalistic e-commerce web page.
 
 ## Demo
 
-Coming soon ...
+[follow the link](https://shoirata.github.io/ecommerce/)
+
+## Preview
+
+| PLP                                                                                                                                                                   | PDP                                                                                                                                                                   |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img width="759" alt="Screenshot 2022-05-15 at 22 43 43" src="https://user-images.githubusercontent.com/77038610/168488860-cad9e538-91f3-4e72-8e4a-f83701daf3ad.png"> | <img width="758" alt="Screenshot 2022-05-15 at 22 41 49" src="https://user-images.githubusercontent.com/77038610/168488793-60219ba8-b5e7-42a9-be58-02b881b9e61b.png"> |
 
 ## Getting Started
 
