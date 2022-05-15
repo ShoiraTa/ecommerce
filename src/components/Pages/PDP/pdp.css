@@ -153,7 +153,6 @@
   color: rgba(212, 47, 47, 0.76);
 }
 
-
 /* small desktop */
 @media only screen and  (max-device-width: 1425px) {
   .pdp__main-img {

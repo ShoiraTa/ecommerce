@@ -63,7 +63,6 @@ a {
   background-repeat: no-repeat;
 }
 
-
 /**********************
 ** container
 **********************/
@@ -88,7 +87,6 @@ a {
 .minicart .container {
   max-width: calc(100% - 7%);
 }
-
 
 /*  desktop sm */
 @media only screen and (min-width: 768px)and (max-device-width: 1425px) {
