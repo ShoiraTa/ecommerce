@@ -43,7 +43,6 @@ class ProductListingCard extends Component {
     });
 
     addProductToCart({ selectedAttrtibutes, id, selectedId: id + 0, qty: 1 });
-    this.props.toggleMinicart();
   };
 
   setPrice = () => {

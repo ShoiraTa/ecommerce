@@ -14,7 +14,6 @@ class Navbar extends Component {
     super(props);
     this.state = {
       dropdownOpen: false,
-      showPopup: false,
     };
   }
 
@@ -27,23 +26,14 @@ class Navbar extends Component {
   toggleDropdown = () => {
     const { dropdownOpen } = this.state;
     this.setState({ dropdownOpen: !dropdownOpen });
-
-    console.log('dropdownOpen', dropdownOpen);
-  };
-
-  toggleMinicart = () => {
-    const { showPopup } = this.state;
-    this.setState({
-      ...this.state,
-      showPopup: !showPopup,
-    });
   };
 
   render() {
-    const { dropdownOpen, showPopup } = this.state;
-    const { setCategory, headerReducer, pricesReducer, setCurrency, cartReducer } = this.props;
+    const { dropdownOpen } = this.state;
+    const { setCategory, headerReducer, pricesReducer, setCurrency, cartReducer, toggleMinicart } = this.props;
     const { categories, currentCategory } = headerReducer;
     const { currentCurrency, currencies } = pricesReducer;
+    // console.log(minicartIsOpen);
     return (
       <header className="container">
         <div className="inner-container">
@@ -92,7 +82,7 @@ class Navbar extends Component {
                     )}
                   </li>
                   <li>
-                    <button type="button" className="nav-right__cart-svg" onClick={this.toggleMinicart}>
+                    <button type="button" className="nav-right__cart-svg" onClick={toggleMinicart}>
                       {cartReducer.totalQty ? <div className="nav-right__total">{cartReducer.totalQty}</div> : null}
                       {cartSvg}
                     </button>
@@ -101,7 +91,7 @@ class Navbar extends Component {
               </li>
             </ul>
           </nav>
-          {showPopup && <Minicart show={showPopup} toggleMinicart={this.toggleMinicart} />}
+          <Minicart />
         </div>
       </header>
     );

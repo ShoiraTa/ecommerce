@@ -24,7 +24,7 @@ class Cart extends Component {
   render() {
     const { cartReducer, updateQty, addProductToCart, page, toggleMinicart } = this.props;
     const { total, products, totalQty, tax } = cartReducer;
-    // console.log(cartReducer);
+    // console.log(toggleMinicart);
     return (
       <div className="container">
         <div className="inner-container">
@@ -58,7 +58,7 @@ class Cart extends Component {
                 })}
             </div>
             {page !== 'minicart' && (
-              <div>
+              <div className="cart__total-wrapper">
                 {total.total ? (
                   <>
                     <div className="cart__total">

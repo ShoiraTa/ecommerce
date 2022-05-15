@@ -77,7 +77,7 @@ class ProductVariants extends Component {
     const { brand, name, attributes, description, gallery, id } = product;
     return (
       <div className="pdp-variants">
-        <div>
+        <div className="pdp-variants__wrapper">
           <div className="pdp-variants__header">
             <h1 className="pdp-variants__brand">{brand}</h1>
             <h3 className="pdp-variants__name">{name}</h3>
