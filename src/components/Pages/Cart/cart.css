@@ -314,4 +314,12 @@
   .cart__products {
     margin-top: 20px;
   }
+
+  .minicart .cart__products{
+    width: 100%;
+  }
+
+  .minicart .cart-slider{
+    margin-left: 0;
+  }
 }
