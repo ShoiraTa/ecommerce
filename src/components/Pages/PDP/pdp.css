@@ -28,7 +28,6 @@
   display: flex;
   flex-direction: column;
   gap: 40px;
-  cursor: pointer;
 }
 
 .pdp__variant-img-wrapper {
@@ -40,6 +39,7 @@
 .pdp__variant-img {
   width: 79px;
   height: 80px;
+  cursor: pointer;
 }
 
 .pdp__main-img {
