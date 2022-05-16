@@ -88,15 +88,10 @@ a {
   max-width: calc(100% - 7%);
 }
 
-/*  desktop sm */
 @media only screen and (min-width: 768px)and (max-device-width: 1425px) {
   .container {
     width: calc(100% - 7%);
     margin: auto;
-  }
-
-  .plp-card__desc {
-    padding: 0;
   }
 
   .container-sm {
