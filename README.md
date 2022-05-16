@@ -21,7 +21,7 @@ In this project, I build a minimalistic e-commerce web page.
 
 ## Demo
 
-[follow the link](https://shoirata.github.io/ecommerce/)
+[follow the link](https://e-commerce-minimalistic.herokuapp.com/)
 
 ## Preview
 
