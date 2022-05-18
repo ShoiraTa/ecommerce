@@ -3,10 +3,11 @@
 .pdp__wrapper {
   display: flex;
   margin-top: 80px;
-  height: 773px;
+  min-height: 760px;
   gap: 100px;
   overflow: hidden;
   margin-left: -15px;
+  padding-bottom: 13px;
 }
 
 .pdp__images {
@@ -187,6 +188,13 @@
   margin-top: 40px;
 }
 
+.pdp-variants__product-description ul {
+  padding: 0;
+}
+
+.pdp-variants__product-description li {
+  list-style: circle;
+}
 /* small desktop */
 @media only screen and  (max-device-width: 1425px) {
   .pdp__main-img {

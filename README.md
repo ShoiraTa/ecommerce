@@ -21,13 +21,13 @@ In this project, I build a minimalistic e-commerce web page.
 
 ## Demo
 
-[follow the link](https://e-commerce-minimalistic.herokuapp.com/)
+..coming soon
 
 ## Preview
 
 | PLP                                                                                                                                                                   | PDP                                                                                                                                                                   |
 | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| <img width="759" alt="Screenshot 2022-05-15 at 22 43 43" src="https://user-images.githubusercontent.com/77038610/168488860-cad9e538-91f3-4e72-8e4a-f83701daf3ad.png"> |<img width="939" alt="Screenshot 2022-05-15 at 23 27 28" src="https://user-images.githubusercontent.com/77038610/168490478-29bd0dde-7998-4582-a6a1-28ca0b6debcc.png">|
+| <img width="759" alt="Screenshot 2022-05-15 at 22 43 43" src="https://user-images.githubusercontent.com/77038610/168488860-cad9e538-91f3-4e72-8e4a-f83701daf3ad.png"> | <img width="939" alt="Screenshot 2022-05-15 at 23 27 28" src="https://user-images.githubusercontent.com/77038610/168490478-29bd0dde-7998-4582-a6a1-28ca0b6debcc.png"> |
 
 ## Getting Started
 
