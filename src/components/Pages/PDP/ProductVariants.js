@@ -74,7 +74,8 @@ class ProductVariants extends Component {
   render() {
     const { page, qty, updateQty, cartSelectedAttributes, product, cartReducer, selectedId } = this.props;
     const { selectedAttrtibutes, allAttrSelected } = this.state;
-    const { brand, name, attributes, description, gallery, id } = product;
+    const { brand, name, attributes, description, gallery, id, inStock } = product;
+    console.log(inStock);
     return (
       <div className="pdp-variants">
         <div className="pdp-variants__wrapper">
@@ -89,6 +90,7 @@ class ProductVariants extends Component {
               </div>
             )}
             <Attributes
+              inStock={inStock}
               attributes={attributes}
               setAttributes={this.setAttributes}
               selectedAttrtibutes={selectedAttrtibutes}
@@ -104,13 +106,17 @@ class ProductVariants extends Component {
                 <div className="pdp-variants__price">{this.setPrice()}</div>
               </div>
               <div className="pdp-variants__add">
-                <button
-                  type="button"
-                  className="pdp-variants__add-btn"
-                  onClick={() => this.addProduct({ selectedAttrtibutes, id, selectedId: id + cartReducer.totalQty })}
-                >
-                  ADD TO CART
-                </button>
+                {!inStock && <p className="warning-text">Temporarily out of stock.</p>}
+                {inStock && (
+                  <button
+                    type="button"
+                    className="pdp-variants__add-btn"
+                    disabled={!inStock}
+                    onClick={() => this.addProduct({ selectedAttrtibutes, id, selectedId: id + cartReducer.totalQty })}
+                  >
+                    ADD TO CART
+                  </button>
+                )}
                 {!allAttrSelected && <p className="warning-text">Please select all attributes</p>}
               </div>
               <div className="pdp-variants__product-description">

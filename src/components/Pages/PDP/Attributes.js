@@ -19,7 +19,8 @@ class Attributes extends Component {
   };
 
   render() {
-    const { attributes, selectedAttrtibutes, cartSelectedAttributes } = this.props;
+    const { attributes, selectedAttrtibutes, cartSelectedAttributes, inStock } = this.props;
+    console.log(inStock);
     return (
       <div>
         {attributes &&
@@ -36,6 +37,7 @@ class Attributes extends Component {
                       className={this.setSelected(selectedAttrtibutes, cartSelectedAttributes, attribute, attr)}
                     >
                       <button
+                        disabled={!inStock}
                         onClick={() => this.props.setAttributes({ label: attribute.name, selected: attr.value })}
                         type="button"
                         className={attribute.name === 'Color' ? 'pdp__color-box' : 'pdp__attr-box'}

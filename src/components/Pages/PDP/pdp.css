@@ -147,8 +147,12 @@
   line-height: 120%;
 }
 
-.pdp-variants__add-btn:hover {
+.pdp-variants__add-btn:hover:enabled {
   background-color: #5ece7cd6;
+}
+
+.pdp-variants__add-btn:hover:disabled{
+  cursor: default;
 }
 
 .pdp-variants__price {

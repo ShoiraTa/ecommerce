@@ -12,7 +12,7 @@ class ProductListingCard extends Component {
         symbol: '',
       },
       hoverCart: false,
-      hoverAddBtn: false,
+      // hoverAddBtn: false,
     };
   }
 
@@ -56,12 +56,11 @@ class ProductListingCard extends Component {
 
   render() {
     const { product, currentCategory } = this.props;
-    const { hoverCart, hoverAddBtn, price } = this.state;
+    const { hoverCart, price } = this.state;
     return (
       <div className={`plp-card__wrapper ${!product.inStock ? 'plp-card__out' : ''}`}>
         <Link
-          to={!product.inStock || hoverAddBtn === true ? '#' : `/${currentCategory}/${product.id}`}
-          className={product.inStock ? '' : 'cursor-default'}
+          to={`/${currentCategory}/${product.id}`}
           onMouseEnter={() => this.setHoverCart()}
           onMouseLeave={() => this.setHoverCart()}
         >

@@ -23,6 +23,7 @@ class ProductDescriptionPage extends PureComponent {
     const { getProduct, params } = this.props;
     const { productId } = params;
     getProduct(productId);
+    window.scrollTo(0, 0);
   }
 
   componentDidUpdate(prevProps) {
