@@ -3,7 +3,7 @@
 .pdp__wrapper {
   display: flex;
   margin-top: 80px;
-  height: 790px;
+  height: 773px;
   gap: 100px;
   overflow: hidden;
 }
@@ -31,14 +31,27 @@
 }
 
 .pdp__variant-img-wrapper {
+  max-height: 510px;
+  overflow-y: scroll;
+  overflow-x: hidden;
   display: flex;
   flex-direction: column;
   gap: 35px;
+  direction:rtl; 
+}
+
+::-webkit-scrollbar {
+  display: block;
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 14px 10px #dadadc;
+  border: solid 5px transparent;
 }
 
 .pdp__variant-img {
   width: 79px;
-  height: 80px;
+  min-height: 80px;
   cursor: pointer;
 }
 
