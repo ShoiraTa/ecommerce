@@ -1,6 +1,6 @@
 /* PLP */
 .products {
-  margin: 80px auto;
+  margin: 79px auto;
 }
 
 .products h1 {
@@ -15,7 +15,6 @@
   margin: 103px 0 191px 0;
   display: grid;
   gap: 100px 40px;
-  justify-content: start;
   grid-template-columns: repeat(auto-fit, minmax(auto, 31%));
 }
 
@@ -48,7 +47,6 @@
 
 .plp-card__desc {
   display: flex;
-  align-items: start;
   flex-direction: column;
   height: 58px;
   padding: 2px 20px;

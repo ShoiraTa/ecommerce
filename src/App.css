@@ -61,10 +61,8 @@ a {
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  
   object-fit: contain;
   object-position: top;
-  
 }
 
 /**********************
@@ -102,74 +100,4 @@ a {
     width: calc(100% - 5%);
     margin: auto;
   }
-}
-
-
-
-
-/* Aspect Ratios */
-
-.aspect-ratio--178-1 {
-  --aspect-ratio: 1.78/1;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
-
-.aspect-ratio--4-1-5 {
-  --aspect-ratio: 4/1.5;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
-
-.aspect-ratio--4-2 {
-  --aspect-ratio: 4/2;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
-
-.aspect-ratio--4-2-5 {
-  --aspect-ratio: 4/2.5;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
-
-.aspect-ratio--4-3 {
-  --aspect-ratio: 4/3;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
-
-.aspect-ratio--4-3-2 {
-  --aspect-ratio: 4/3.2;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
-
-.aspect-ratio--4-3-5 {
-  --aspect-ratio: 4/3.5;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
-
-.aspect-ratio--4-3-8 {
-  --aspect-ratio: 4/3.8;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
-
-.aspect-ratio--4-4 {
-  --aspect-ratio: 4/4;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
-
-.aspect-ratio--4_1 {
-  --aspect-ratio: 4/4.1;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
-
-.aspect-ratio--4-6 {
-  --aspect-ratio: 4/4.6;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
-
-.aspect-ratio--4-1 {
-  --aspect-ratio: 4/4.5;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
-}
-
-.aspect-ratio--hero {
-  --aspect-ratio: 4/4;
-  padding-bottom: calc(100% / (var(--aspect-ratio)));
 }

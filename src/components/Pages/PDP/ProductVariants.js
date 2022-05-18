@@ -100,7 +100,7 @@ class ProductVariants extends Component {
 
           {page === 'pdp' && (
             <>
-              <div className="pdp-variants__price-wrapper">
+              <div className="pdp-variants__price-wrapper pdp-variants__price-wrapper-margin">
                 <h3 className="pdp-variant__header">PRICE</h3>
                 <div className="pdp-variants__price">{this.setPrice()}</div>
               </div>
