@@ -58,9 +58,6 @@ a {
 .pdp__variant-img,
 .plp-card__img,
 .pdp__main-img {
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
   object-fit: contain;
   object-position: top;
 }
