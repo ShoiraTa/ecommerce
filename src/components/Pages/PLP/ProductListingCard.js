@@ -65,7 +65,7 @@ class ProductListingCard extends Component {
           onMouseLeave={() => this.setHoverCart()}
         >
           <div className="plp-card__img-container">
-            <div className="plp-card__img" style={{ backgroundImage: `url(${product.gallery[0]})` }} />
+            <img className="plp-card__img" src={`${product.gallery[0]}`} alt={product.name} />
             {!product.inStock && (
               <div className="plp-card__outofstock">
                 <p>OUT OF STOCK</p>

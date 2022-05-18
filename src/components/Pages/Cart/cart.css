@@ -34,6 +34,7 @@
 .cart-slider {
   display: flex;
   min-height: 288px;
+  position: relative;
 }
 
 .cart-slider__item-qty {
@@ -57,10 +58,7 @@
 .cart__images-wrapper {
   margin-left: 24px;
   width: 200px;
-  position: relative;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
+  object-fit: contain;
 }
 
 .cart__total-wrapper {

@@ -83,7 +83,6 @@ const cartReducer = (state = initState, action) => {
         total: { total, symbol: action.payload },
       };
     case actionType.TOGGLE_MINICART:
-      console.log(state);
       return {
         ...state,
         minicartIsOpen: !state.minicartIsOpen,

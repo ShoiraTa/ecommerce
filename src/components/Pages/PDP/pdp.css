@@ -105,6 +105,10 @@
   position: relative;
 }
 
+.pdp__color-box-white {
+  border: 1px solid #1D1F22;
+}
+
 .selected-pdp__attr-box {
   position: relative;
 }
@@ -127,8 +131,18 @@
   border: 1px solid var(--c-text);
 }
 
+
 .selected-pdp__attr-box > button {
   background-color: #1d1f22;
+  color: #fff;
+}
+
+
+.pdp__attr-box:disabled {
+  color: var(--c-text);
+}
+
+.selected-pdp__attr-box > button:disabled{
   color: #fff;
 }
 
@@ -168,6 +182,10 @@
 
 .warning-text {
   color: rgba(212, 47, 47, 0.76);
+}
+
+.pdp-variants__price-wrapper{
+  margin-top: 40px;
 }
 
 /* small desktop */
@@ -288,7 +306,7 @@
   }
 
   .pdp__wrapper .pdp-variants__header,
-  .pdp-variants__price-wrapper,
+  .pdp-variants__price-wrapper
   .pdp-variants__product-description p {
     margin: 0 !important;
   }

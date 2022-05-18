@@ -53,16 +53,14 @@ export const getProductPrice = (data) => async (dispatch) => {
     data: getProductPrice,
     method: 'POST',
     headers,
-  })
-    .then((response) => {
-      dispatch({
-        type: actionType.FETCH_PRODUCT_PRICE,
-        payload: {
-          prices: response.data.data.product.prices,
-          currency: data.currency,
-          id: data.id,
-        },
-      });
-    })
-    .catch((error) => console.log(error));
+  }).then((response) => {
+    dispatch({
+      type: actionType.FETCH_PRODUCT_PRICE,
+      payload: {
+        prices: response.data.data.product.prices,
+        currency: data.currency,
+        id: data.id,
+      },
+    });
+  });
 };

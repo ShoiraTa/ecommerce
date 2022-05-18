@@ -44,17 +44,15 @@ export const addProductToCart = (product) => async (dispatch) => {
     data: fetchProduct,
     method: 'POST',
     headers,
-  })
-    .then((response) => {
-      dispatch({
-        type: actionType.ADD_TO_CART,
-        payload: {
-          product: response.data.data.product,
-          selected: product,
-        },
-      });
-    })
-    .catch((error) => console.log(error));
+  }).then((response) => {
+    dispatch({
+      type: actionType.ADD_TO_CART,
+      payload: {
+        product: response.data.data.product,
+        selected: product,
+      },
+    });
+  });
 };
 
 export const updateQty = (selectedId, action) => ({

@@ -2,25 +2,26 @@ import React, { Component } from 'react';
 
 class ProductDescriptionImages extends Component {
   render() {
-    const { gallery, productImg, setImage } = this.props;
+    const { gallery, productImg, setImage, productName } = this.props;
     return (
       <div className="pdp__images">
         <div>
           <div className="pdp__variant-img-wrapper">
             {gallery &&
               gallery.map((image) => (
-                <div
-                  aria-hidden="true"
-                  key={image}
+                <img
                   className="pdp__variant-img"
-                  style={{ backgroundImage: `url(${image})` }}
+                  src={`${image}`}
+                  alt={productName}
                   onClick={() => setImage(image)}
+                  key={image}
+                  aria-hidden="true"
                 />
               ))}
           </div>
         </div>
         <div>
-          <div className="pdp__main-img" style={{ backgroundImage: `url(${productImg})` }} />
+          <img className="pdp__main-img" src={`${productImg}`} alt={productName} />
         </div>
       </div>
     );

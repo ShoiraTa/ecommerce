@@ -51,6 +51,7 @@ class ProductDescriptionPage extends PureComponent {
               gallery={gallery}
               productImg={productImg}
               setImage={(image) => this.setState({ productImg: image })}
+              productName={product.name}
             />
             <ProductVariants product={product} addProductToCart={addProductToCart} productId={productId} page="pdp" />
           </div>

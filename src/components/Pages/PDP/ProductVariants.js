@@ -75,7 +75,6 @@ class ProductVariants extends Component {
     const { page, qty, updateQty, cartSelectedAttributes, product, cartReducer, selectedId } = this.props;
     const { selectedAttrtibutes, allAttrSelected } = this.state;
     const { brand, name, attributes, description, gallery, id, inStock } = product;
-    console.log(inStock);
     return (
       <div className="pdp-variants">
         <div className="pdp-variants__wrapper">
@@ -101,7 +100,7 @@ class ProductVariants extends Component {
 
           {page === 'pdp' && (
             <>
-              <div className="pdp-variants__price-wrapper" style={{ marginTop: '40px' }}>
+              <div className="pdp-variants__price-wrapper">
                 <h3 className="pdp-variant__header">PRICE</h3>
                 <div className="pdp-variants__price">{this.setPrice()}</div>
               </div>
@@ -136,7 +135,7 @@ class ProductVariants extends Component {
                 {minusSquare}
               </button>
             </div>
-            <Slider page={page} gallery={gallery} />
+            <Slider page={page} gallery={gallery} productName={name} />
           </div>
         )}
       </div>

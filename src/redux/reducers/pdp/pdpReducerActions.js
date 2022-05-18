@@ -46,14 +46,12 @@ export const getProduct = (id) => async (dispatch) => {
     data: fetchProduct,
     method: 'POST',
     headers,
-  })
-    .then((response) => {
-      dispatch({
-        type: actionType.FETCH_PRODUCT,
-        payload: response.data.data.product,
-      });
-    })
-    .catch((error) => console.log(error));
+  }).then((response) => {
+    dispatch({
+      type: actionType.FETCH_PRODUCT,
+      payload: response.data.data.product,
+    });
+  });
 };
 export const getCategoryProducts = (categoryName) => async (dispatch) => {
   const categoryProductsQuery = {

@@ -23,7 +23,6 @@ class NavbarDropdown extends Component {
   }
 
   render() {
-    console.log(this.props.show);
     const { currencies, setCurrency, toggleDropdown } = this.props;
     if (!this.props.show) return null;
     return (

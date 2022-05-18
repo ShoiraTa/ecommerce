@@ -30,7 +30,6 @@ class Minicart extends Component {
   render() {
     const { toggleMinicart, cartReducer } = this.props;
     const { minicartIsOpen } = cartReducer;
-    console.log(this.props);
     return (
       minicartIsOpen && (
         <div aria-hidden="true" className="minicart__wrapper">

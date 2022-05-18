@@ -18,9 +18,14 @@ class Attributes extends Component {
     return null;
   };
 
+  // classes = {
+  //   'pdp__color-box': attribute.name === 'Color',
+  //   otherClass: true,
+  //   probablyNotClass: false,
+  // };
+
   render() {
     const { attributes, selectedAttrtibutes, cartSelectedAttributes, inStock } = this.props;
-    console.log(inStock);
     return (
       <div>
         {attributes &&
@@ -40,10 +45,12 @@ class Attributes extends Component {
                         disabled={!inStock}
                         onClick={() => this.props.setAttributes({ label: attribute.name, selected: attr.value })}
                         type="button"
-                        className={attribute.name === 'Color' ? 'pdp__color-box' : 'pdp__attr-box'}
+                        className={[
+                          attribute.name === 'Color' ? 'pdp__color-box' : 'pdp__attr-box',
+                          attr.id === 'White' && 'pdp__color-box-white',
+                        ].join(' ')}
                         style={{
                           backgroundColor: attribute.name === 'Color' ? `${attr.value}` : '',
-                          border: attr.id === 'White' ? '1px solid #1D1F22' : null,
                         }}
                       >
                         <div className={attribute.name === 'Color' ? 'selected-pdp__color-border' : ''} />
