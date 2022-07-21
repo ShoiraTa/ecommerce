@@ -21,7 +21,7 @@ In this project, I build a minimalistic e-commerce web page.
 
 ## Demo
 
-..coming soon
+https://e-commerce-minimalistic.herokuapp.com/
 
 ## Preview
 
